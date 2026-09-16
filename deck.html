@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boa Compra 360°</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#060606;font-family:'Inter',Arial,sans-serif}
+
+:root{
+  --ink:#0d0d0d;
+  --red:#C00000;
+  --red2:#8B0000;
+  --smoke:#ffffff;
+  --mist:#e0e0de;
+  --gray:#666;
+  --dim:#3a3a3a;
+  --wire:#242424;
+}
+
+/* ── SHELL ── */
+body{display:flex;flex-direction:column}
+#arena{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+#canvas{width:960px;height:540px;position:relative;transform-origin:center center}
+#hud{
+  position:absolute;bottom:0;left:0;right:0;height:40px;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  background:rgba(6,6,6,.9);backdrop-filter:blur(8px);
+}
+.hud-btn{background:none;border:none;color:#444;cursor:pointer;font-size:16px;padding:8px 14px;transition:color .15s}
+.hud-btn:hover{color:#fff}
+#counter{font-family:'Oswald',sans-serif;font-size:12px;color:#333;letter-spacing:3px;min-width:56px;text-align:center}
+#progress{position:absolute;bottom:40px;left:0;right:0;height:2px;background:var(--wire)}
+#progress-bar{height:100%;background:var(--red);transition:width .3s}
+
+/* ── SLIDE BASE ── */
+.slide{position:absolute;inset:0}
+
+/* ── DARK BASE ── */
+.dk{background:var(--ink)}
+.lt{background:var(--smoke)}
+
+/* ── SHARED ATOMS ── */
+.eyebrow{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase}
+.display{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.92}
+.label{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.body-sm{font-size:12px;line-height:1.6;color:var(--gray)}
+.body-xs{font-size:11px;line-height:1.55}
+
+.red{color:var(--red)}
+.white{color:#fff}
+.gray{color:var(--gray)}
+.ink{color:var(--ink)}
+
+/* ─────────────── SLIDE DESIGNS ─────────────── */
+
+/* 1 — CAPA */
+#s1{background:var(--ink);overflow:hidden}
+#s1 .bg-num{
+  position:absolute;right:-20px;top:-10px;
+  font-family:'Oswald',sans-serif;font-size:440px;font-weight:700;
+  color:rgba(255,255,255,.025);line-height:1;pointer-events:none;
+  text-transform:uppercase;
+}
+#s1 .inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:56px 60px}
+#s1 .tag{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:6px;color:var(--red);text-transform:uppercase;margin-bottom:28px}
+#s1 .h1{font-family:'Oswald',sans-serif;font-size:100px;font-weight:700;text-transform:uppercase;color:#fff;line-height:.9;margin-bottom:20px}
+#s1 .h1 span{color:var(--red)}
+#s1 .rule{width:48px;height:3px;background:var(--red);margin-bottom:20px}
+#s1 .sub{font-size:14px;color:rgba(255,255,255,.35);letter-spacing:2px;font-family:'Oswald',sans-serif;text-transform:uppercase}
+#s1 .sig{position:absolute;bottom:32px;right:52px;font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:3px;text-transform:uppercase}
+#s1 .date{position:absolute;bottom:32px;left:52px;font-family:'Oswald',sans-serif;font-size:10px;color:rgba(255,255,255,.15);letter-spacing:2px}
+
+/* 2 — V4 CREDENCIAIS */
+#s2{background:var(--ink);display:flex}
+#s2 .left{width:52%;padding:48px 48px 48px 56px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--wire)}
+#s2 .right{flex:1;padding:48px 44px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+#s2 .section-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:20px}
+#s2 .big-n{font-family:'Oswald',sans-serif;font-size:86px;font-weight:700;color:var(--red);line-height:1}
+#s2 .stat-block{margin-bottom:28px}
+#s2 .stat-label{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-top:4px;margin-bottom:8px}
+#s2 .stat-desc{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5;max-width:260px}
+#s2 .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#s2 .case-item{background:var(--wire);border:1px solid #2e2e2e;padding:12px;display:flex;align-items:center;justify-content:center;border-radius:3px}
+#s2 .case-item span{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);text-align:center}
+#s2 .right-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:12px}
+
+/* 3 — CASES INSTAGRAM */
+#s3{background:var(--ink);display:flex;flex-direction:column;padding:40px 52px}
+#s3 .top{margin-bottom:16px}
+#s3 .top-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
+#s3 .top-title{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1}
+#s3 .embeds{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:14px;overflow:hidden}
+.ig-card{border-radius:6px;overflow:hidden;background:#111;border:1px solid var(--wire);display:flex;flex-direction:column}
+.ig-card-header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--wire);flex-shrink:0}
+.ig-card-av{width:34px;height:34px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+.ig-card-name{font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;color:#fff}
+.ig-card-sub{font-size:10px;color:var(--gray);margin-top:1px}
+.ig-card-body{flex:1;position:relative;overflow:hidden;background:#0a0a0a}
+.ig-card-body iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+.ig-card-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;pointer-events:none}
+.ig-card-fallback-icon{font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;color:rgba(192,0,0,.15)}
+.ig-card-fallback-text{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.1);text-transform:uppercase}
+.ig-card-footer{padding:9px 14px;border-top:1px solid var(--wire);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.ig-card-link{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--red);text-decoration:none;text-transform:uppercase;pointer-events:all}
+.ig-card-link:hover{color:#fff}
+
+/* 4 — SEP GENÉRICO */
+.sep{background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sep .bg-word{
+  position:absolute;font-family:'Oswald',sans-serif;font-size:200px;font-weight:700;
+  text-transform:uppercase;color:rgba(255,255,255,.03);letter-spacing:-4px;
+  user-select:none;white-space:nowrap;
+}
+.sep .center{position:relative;z-index:1;text-align:center}
+.sep .sep-n{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:6px;color:var(--red);text-transform:uppercase;margin-bottom:16px}
+.sep .sep-title{font-family:'Oswald',sans-serif;font-size:64px;font-weight:700;color:#fff;text-transform:uppercase;line-height:.92;text-align:center}
+.sep .sep-title em{color:var(--red);font-style:normal}
+.sep .sep-line{width:32px;height:3px;background:var(--red);margin:20px auto 0}
+
+/* 5 — O QUE ENCONTRAMOS */
+#s5{background:var(--smoke);display:flex}
+#s5 .left-bar{width:6px;background:var(--red);flex-shrink:0}
+#s5 .inner{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;gap:0}
+#s5 .heading{grid-column:1/-1;padding:36px 48px 20px;border-bottom:1px solid var(--mist)}
+#s5 .heading .sec{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
+#s5 .heading h2{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;text-transform:uppercase;color:#000;line-height:1}
+#s5 .data-col{padding:20px 48px 28px;display:flex;flex-direction:column;gap:14px}
+#s5 .data-col:first-of-type{border-right:1px solid var(--mist)}
+#s5 .data-item{display:flex;gap:12px;align-items:flex-start}
+#s5 .data-n{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:var(--red);line-height:1;min-width:64px;flex-shrink:0}
+#s5 .data-info{}
+#s5 .data-title{font-size:13px;font-weight:700;color:#000;margin-bottom:3px}
+#s5 .data-desc{font-size:11px;color:#555;line-height:1.45}
+#s5 .bottom-note{grid-column:1/-1;padding:16px 48px;background:var(--ink);color:rgba(255,255,255,.65);font-size:12px;letter-spacing:.3px;border-left:4px solid var(--red)}
+#s5 .bottom-note strong{color:#fff}
+
+/* 6 — PROBLEMA (quote slide) */
+#s6{background:var(--ink);display:flex;flex-direction:column;padding:52px 60px}
+#s6 .top-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:24px}
+#s6 .quote-wrap{flex:1;display:flex;flex-direction:column;justify-content:center}
+#s6 .q-text{font-family:'Oswald',sans-serif;font-size:38px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.05;margin-bottom:28px;max-width:760px}
+#s6 .q-text em{color:var(--red);font-style:normal}
+#s6 .impacts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+#s6 .impact{border-top:2px solid var(--wire);padding-top:12px}
+#s6 .impact-icon{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--red);margin-bottom:6px;text-transform:uppercase}
+#s6 .impact-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:4px;line-height:1.3}
+#s6 .impact-text{font-size:11px;color:rgba(255,255,255,.35);line-height:1.45}
+
+/* 7 — CONCORRENTE: HIPER FAROL */
+#s7{background:var(--ink);display:grid;grid-template-columns:320px 1fr;overflow:hidden}
+#s7 .left{background:#111;border-right:1px solid var(--wire);padding:40px 32px;display:flex;flex-direction:column}
+#s7 .ig-mock{flex:1}
+#s7 .ig-prof{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+#s7 .ig-av{width:48px;height:48px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+#s7 .ig-name{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;color:#fff}
+#s7 .ig-sub{font-size:10px;color:var(--gray);margin-top:2px}
+#s7 .ig-stats-row{display:flex;gap:0;margin-bottom:16px;border-top:1px solid var(--wire);border-bottom:1px solid var(--wire);padding:12px 0}
+#s7 .ig-stat{flex:1;text-align:center}
+#s7 .ig-stat-n{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:#fff}
+#s7 .ig-stat-l{font-size:9px;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
+#s7 .ig-bio-text{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5;margin-bottom:14px}
+#s7 .ig-tags{display:flex;flex-direction:column;gap:5px}
+#s7 .ig-tag-item{display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.35)}
+#s7 .ig-tag-dot{width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0}
+#s7 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:16px}
+#s7 .gthumb{aspect-ratio:1;background:var(--wire);border-radius:2px}
+#s7 .right{padding:40px 44px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+#s7 .an-sec{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
+#s7 .an-title{font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:20px}
+#s7 .an-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#s7 .an-col{padding:14px;border-top:2px solid;display:flex;flex-direction:column;gap:8px}
+#s7 .an-col.pos{border-color:#2a6040;background:#0f1f18}
+#s7 .an-col.neg{border-color:#5a1515;background:#1c0f0f}
+#s7 .an-col-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+#s7 .an-col.pos .an-col-label{color:#4aad7a}
+#s7 .an-col.neg .an-col-label{color:#cc4444}
+#s7 .an-item{font-size:11px;color:rgba(255,255,255,.5);line-height:1.4;padding-left:10px;border-left:2px solid rgba(255,255,255,.08)}
+#s7 .gap-note{background:#1a1a1a;border:1px solid var(--wire);padding:12px 14px;border-radius:4px;font-size:11px;color:rgba(255,255,255,.5);line-height:1.45}
+#s7 .gap-note strong{color:var(--red)}
+
+/* 8 — CONCORRENTE: MERCADO BH */
+#s8{background:var(--ink);display:grid;grid-template-columns:320px 1fr;overflow:hidden}
+#s8 .left{background:#111;border-right:1px solid var(--wire);padding:40px 32px;display:flex;flex-direction:column}
+#s8 .right{padding:40px 44px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+
+/* 9 — BENCHMARK CARREFOUR */
+#s9{background:var(--smoke);display:flex;flex-direction:column;padding:40px 52px}
+#s9 .heading{margin-bottom:20px}
+#s9 .heading .sec{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
+#s9 .heading h2{font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#000;text-transform:uppercase;line-height:1}
+#s9 .grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#s9 .bk-card{background:var(--ink);padding:20px;display:flex;flex-direction:column;gap:8px;border-radius:4px}
+#s9 .bk-n{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:2px}
+#s9 .bk-title{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:#fff;text-transform:uppercase}
+#s9 .bk-text{font-size:11px;color:rgba(255,255,255,.6);line-height:1.55}
+#s9 .bk-note{font-size:10px;color:rgba(255,255,255,.3);font-style:italic;border-top:1px solid var(--wire);padding-top:8px;margin-top:auto}
+
+/* 10 — TÁTICAS DO SETOR */
+#s10{background:var(--ink);display:flex;flex-direction:column;padding:40px 52px}
+#s10 .heading{margin-bottom:16px}
+#s10 .heading .sec{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:6px}
+#s10 .heading h2{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1}
+#s10 .tactics{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:10px}
+#s10 .tac{background:#111;border:1px solid var(--wire);padding:16px;display:flex;flex-direction:column;gap:6px;border-radius:3px}
+#s10 .tac-n{font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;color:rgba(192,0,0,.2);line-height:1}
+#s10 .tac-title{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;color:#fff;text-transform:uppercase}
+#s10 .tac-text{font-size:11px;color:rgba(255,255,255,.35);line-height:1.5}
+
+/* 11 — PERFIL PÚBLICO */
+#s11{background:var(--ink);display:flex;flex-direction:column;overflow:hidden;padding:0}
+#s11 .top-strip{background:var(--red);padding:20px 56px 16px;flex-shrink:0}
+#s11 .top-strip .sec{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:rgba(255,255,255,.7);text-transform:uppercase;margin-bottom:4px}
+#s11 .top-strip h2{font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1}
+#s11 .content{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0}
+#s11 .stat-side{display:flex;flex-direction:column;border-right:1px solid var(--wire);padding:28px 40px;gap:24px;justify-content:center}
+#s11 .pub-stat{display:flex;align-items:flex-end;gap:12px}
+#s11 .pub-n{font-family:'Oswald',sans-serif;font-size:72px;font-weight:700;color:var(--red);line-height:1}
+#s11 .pub-info{}
+#s11 .pub-label{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;line-height:1.3}
+#s11 .pub-desc{font-size:11px;color:rgba(255,255,255,.35);line-height:1.45}
+#s11 .insights{padding:28px 36px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+#s11 .insight{display:flex;gap:10px;align-items:flex-start}
+#s11 .ins-dot{width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:5px;flex-shrink:0}
+#s11 .ins-text{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+#s11 .ins-text strong{color:#fff}
+
+/* 12 — RODA 360 */
+#s12{background:var(--ink);display:flex;align-items:center;padding:40px 52px;gap:40px;overflow:hidden}
+#s12 .wheel-side{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:16px}
+#s12 .wheel-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase}
+#s12 .info-side{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px}
+#s12 .info-title{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:#fff;text-transform:uppercase;line-height:.95;margin-bottom:6px}
+#s12 .info-title em{color:var(--red);font-style:normal}
+#s12 .info-tagline{font-size:13px;color:rgba(255,255,255,.35);font-style:italic;margin-bottom:16px;border-left:3px solid var(--red);padding-left:12px}
+#s12 .pillar-list{display:flex;flex-direction:column;gap:10px}
+#s12 .pillar{display:flex;gap:12px;align-items:flex-start}
+#s12 .p-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
+#s12 .p-name{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:2px}
+#s12 .p-desc{font-size:11px;color:rgba(255,255,255,.4);line-height:1.4}
+
+/* 13-16 — PILARES */
+.pilar{background:var(--ink);display:grid;grid-template-columns:280px 1fr;overflow:hidden}
+.pilar .p-left{display:flex;flex-direction:column;justify-content:flex-end;padding:40px 36px;position:relative;overflow:hidden}
+.pilar .p-bg-letter{position:absolute;top:-20px;left:-10px;font-family:'Oswald',sans-serif;font-size:220px;font-weight:700;color:rgba(255,255,255,.03);text-transform:uppercase;line-height:1;user-select:none}
+.pilar .p-left-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:12px;position:relative}
+.pilar .p-left-title{font-family:'Oswald',sans-serif;font-size:40px;font-weight:700;color:#fff;text-transform:uppercase;line-height:.95;position:relative}
+.pilar .p-left-def{font-size:11px;color:rgba(255,255,255,.35);line-height:1.5;margin-top:14px;position:relative;max-width:220px}
+.pilar .p-right{padding:36px 44px;display:flex;flex-direction:column;justify-content:center;gap:10px;border-left:1px solid var(--wire)}
+.pilar .p-metric{margin-top:auto;padding-top:14px;border-top:1px solid var(--wire);display:flex;gap:16px}
+.pilar .pm-block{flex:1}
+.pilar .pm-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:4px}
+.pilar .pm-text{font-size:11px;color:rgba(255,255,255,.4)}
+.action-item{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;background:#111;border-radius:3px;border-left:3px solid var(--wire)}
+.action-item.hl{border-left-color:var(--red)}
+.action-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:3px}
+.action-text{font-size:11px;color:rgba(255,255,255,.35);line-height:1.45}
+.ai-dot{width:6px;height:6px;border-radius:50%;background:var(--dim);margin-top:5px;flex-shrink:0}
+.action-item.hl .ai-dot{background:var(--red)}
+
+/* 17 — METRIFICAÇÃO */
+#s17{background:var(--smoke);display:flex;flex-direction:column;padding:0;overflow:hidden}
+#s17 .top{background:var(--ink);padding:28px 52px;flex-shrink:0}
+#s17 .top .sec{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:6px}
+#s17 .top h2{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1}
+#s17 .top p{font-size:12px;color:rgba(255,255,255,.35);margin-top:6px;font-style:italic;border-left:3px solid var(--red);padding-left:10px}
+#s17 .body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0}
+#s17 .metricas{padding:24px 44px 24px 52px;border-right:1px solid var(--mist);display:flex;flex-direction:column;gap:10px;justify-content:center}
+#s17 .met-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--mist)}
+#s17 .met-row:last-child{border-bottom:none}
+#s17 .met-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
+#s17 .met-name{font-size:12px;font-weight:700;color:#000;flex:1}
+#s17 .met-desc{font-size:11px;color:#555}
+#s17 .fases{padding:24px 44px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+#s17 .fase{border-left:4px solid;padding:12px 14px;border-radius:0 4px 4px 0}
+#s17 .fase.f1{border-color:var(--red);background:#fff8f8}
+#s17 .fase.f2{border-color:#aaa;background:#f5f5f5}
+#s17 .fase.f3{border-color:#ccc;background:#f0f0f0}
+#s17 .fase-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-bottom:3px}
+#s17 .fase.f1 .fase-label{color:var(--red)}
+#s17 .fase-title{font-size:12px;font-weight:700;color:#000;margin-bottom:3px}
+#s17 .fase-text{font-size:11px;color:#555;line-height:1.45}
+
+/* 18 — ENCERRAMENTO */
+#s18{background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+#s18 .bg-txt{position:absolute;font-family:'Oswald',sans-serif;font-size:280px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.02);white-space:nowrap;letter-spacing:-4px}
+#s18 .center{position:relative;z-index:1;text-align:center}
+#s18 .thank{font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;color:#fff;text-transform:uppercase;line-height:.9}
+#s18 .thank em{color:var(--red);font-style:normal}
+#s18 .rule{width:40px;height:3px;background:var(--red);margin:20px auto}
+#s18 .credits{font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:rgba(255,255,255,.2);text-transform:uppercase}
+</style>
+</head>
+<body>
+<div id="arena">
+  <div id="canvas">
+
+<!-- 1 — CAPA -->
+<div class="slide dk" id="s1">
+  <div class="bg-num">360</div>
+  <div class="inner">
+    <div class="tag">Proposta Estratégica · Setembro 2026</div>
+    <div class="h1">PLANO<br><span>360°</span></div>
+    <div class="rule"></div>
+    <div class="sub">Supermercados Boa Compra × V4 Carvalho & Co</div>
+  </div>
+  <div class="sig">V4 Carvalho & Co</div>
+  <div class="date">Setembro 2026</div>
+</div>
+
+<!-- 2 — V4 CREDENCIAIS -->
+<div class="slide dk" id="s2">
+  <div class="left">
+    <div class="section-tag">01 · Quem somos</div>
+    <div class="stat-block">
+      <div class="big-n">95<span style="font-size:40px;color:rgba(192,0,0,.6)">%</span></div>
+      <div class="stat-label">Retenção de clientes</div>
+      <div class="stat-desc">Na carteira ativa. Não retemos por contrato — retemos por resultado.</div>
+    </div>
+    <div class="stat-block">
+      <div class="big-n" style="font-size:56px">2 TRIM.</div>
+      <div class="stat-label">Melhor unidade V4</div>
+      <div class="stat-desc">Por dois trimestres consecutivos. Excelência operacional como padrão.</div>
+    </div>
+    <div class="stat-block" style="margin-bottom:0">
+      <div class="big-n" style="font-size:56px">27 ANOS</div>
+      <div class="stat-label">Em agência antes da V4</div>
+      <div class="stat-desc">Metodologia sólida, construída ao longo de décadas de mercado.</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-label">Cases de sucesso</div>
+    <div class="case-grid">
+      <div class="case-item"><span>Josapar</span></div>
+      <div class="case-item"><span>Grupo Luchino</span></div>
+      <div class="case-item"><span>Klubi</span></div>
+      <div class="case-item"><span>Positive</span></div>
+    </div>
+    <div style="margin-top:20px;padding:16px;background:rgba(192,0,0,.08);border:1px solid rgba(192,0,0,.2);border-radius:4px">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:8px">Posicionamento</div>
+      <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.55">Não somos a primeira agência a atender você. Mas nossa metodologia garante que não precisará de outra.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3 — CASES INSTAGRAM -->
+<div class="slide dk" id="s3">
+  <div class="top">
+    <div class="top-tag">01 · Cases</div>
+    <div class="top-title">RESULTADOS QUE FALAM POR SI</div>
+  </div>
+  <div class="embeds">
+    <div class="ig-card">
+      <div class="ig-card-header">
+        <div class="ig-card-av">V4</div>
+        <div>
+          <div class="ig-card-name">v4carvalhoeco</div>
+          <div class="ig-card-sub">V4 Carvalho &amp; Co</div>
+        </div>
+      </div>
+      <div class="ig-card-body">
+        <div class="ig-card-fallback">
+          <div class="ig-card-fallback-icon">▶</div>
+          <div class="ig-card-fallback-text">Case 01</div>
+        </div>
+        <iframe src="https://www.instagram.com/p/DbvgCaCxCRr/embed/" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+      </div>
+      <div class="ig-card-footer">
+        <a href="https://www.instagram.com/p/DbvgCaCxCRr/" target="_blank" class="ig-card-link">Ver no Instagram →</a>
+      </div>
+    </div>
+    <div class="ig-card">
+      <div class="ig-card-header">
+        <div class="ig-card-av">V4</div>
+        <div>
+          <div class="ig-card-name">v4carvalhoeco</div>
+          <div class="ig-card-sub">V4 Carvalho &amp; Co</div>
+        </div>
+      </div>
+      <div class="ig-card-body">
+        <div class="ig-card-fallback">
+          <div class="ig-card-fallback-icon">▶</div>
+          <div class="ig-card-fallback-text">Case 02</div>
+        </div>
+        <iframe src="https://www.instagram.com/p/DbTprZmRo_A/embed/" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+      </div>
+      <div class="ig-card-footer">
+        <a href="https://www.instagram.com/p/DbTprZmRo_A/" target="_blank" class="ig-card-link">Ver no Instagram →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 — SEP DIAGNÓSTICO -->
+<div class="slide sep" id="s4">
+  <div class="bg-word">DIAGNÓSTICO</div>
+  <div class="center">
+    <div class="sep-n">Seção 02</div>
+    <div class="sep-title"><em>DIAGNÓSTICO</em></div>
+    <div class="sep-line"></div>
+  </div>
+</div>
+
+<!-- 5 — O QUE ENCONTRAMOS -->
+<div class="slide lt" id="s5">
+  <div class="left-bar"></div>
+  <div class="inner">
+    <div class="heading">
+      <div class="sec">02 · Diagnóstico</div>
+      <h2>O QUE ENCONTRAMOS</h2>
+    </div>
+    <div class="data-col">
+      <div class="data-item">
+        <div class="data-n">6</div>
+        <div class="data-info">
+          <div class="data-title">Cidades — 3 regiões</div>
+          <div class="data-desc">Norte de MG · Vale do Jequitinhonha · Vale do Mucuri. Cada praça com comportamento distinto.</div>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-n" style="font-size:18px;line-height:1.2">R$4M<br>–16M</div>
+        <div class="data-info">
+          <div class="data-title">Faturamento mensal por loja</div>
+          <div class="data-desc">Variação expressiva entre unidades — oportunidade de nivelamento com estratégia correta por praça.</div>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-n" style="font-size:16px;line-height:1.2">R$2–3K</div>
+        <div class="data-info">
+          <div class="data-title">Investimento digital atual</div>
+          <div class="data-desc">Somente Meta Ads. Google via agência terceirizada sem visibilidade de resultados.</div>
+        </div>
+      </div>
+    </div>
+    <div class="data-col">
+      <div class="data-item">
+        <div class="data-n">1</div>
+        <div class="data-info">
+          <div class="data-title">Campanha ativa — Clube de Desconto</div>
+          <div class="data-desc">Sem variações, sem teste A/B, sem segmentação por perfil ou cidade.</div>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-n" style="font-size:16px;line-height:1.2">4×</div>
+        <div class="data-info">
+          <div class="data-title">Canais offline ativos</div>
+          <div class="data-desc">WhatsApp · Rádio · Carro de som · Outdoor — todos sem rastreamento de retorno.</div>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-n" style="font-size:16px;color:#555">—</div>
+        <div class="data-info">
+          <div class="data-title">Pixel de conversão</div>
+          <div class="data-desc">Não instalado. Site em desenvolvimento. Nenhuma landing page de conversão ativa.</div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-note">
+      <strong>Diagnóstico:</strong> A estrutura de negócio existe e tem escala real. O que falta é integração entre os canais e capacidade de medir o que funciona.
+    </div>
+  </div>
+</div>
+
+
+<!-- 7 — SEP CONCORRENTES -->
+<div class="slide sep" id="s7-sep">
+  <div class="bg-word">MERCADO</div>
+  <div class="center">
+    <div class="sep-n">Seção 03</div>
+    <div class="sep-title">ANÁLISE<br><em>COMPETITIVA</em></div>
+    <div class="sep-line"></div>
+  </div>
+</div>
+
+<!-- 8 — HIPER FAROL -->
+<div class="slide dk" id="s7">
+  <div class="left">
+    <div class="ig-mock">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:14px">03 · Concorrente — Almenara</div>
+      <div class="ig-prof">
+        <div class="ig-av">HF</div>
+        <div>
+          <div class="ig-name">@hiperfarolsupermercado</div>
+          <div class="ig-sub">2.911 publicações</div>
+        </div>
+      </div>
+      <div class="ig-stats-row">
+        <div class="ig-stat"><div class="ig-stat-n">11K</div><div class="ig-stat-l">Seguidores</div></div>
+        <div class="ig-stat"><div class="ig-stat-n">Ativo</div><div class="ig-stat-l">WhatsApp</div></div>
+        <div class="ig-stat"><div class="ig-stat-n">Site</div><div class="ig-stat-l">Próprio</div></div>
+      </div>
+      <div class="ig-bio-text">"Orgulho de Ser Almenarense"<br>Entrega grátis no município.</div>
+      <div class="ig-tags">
+        <div class="ig-tag-item"><div class="ig-tag-dot"></div>(33) 3721-6611</div>
+        <div class="ig-tag-item"><div class="ig-tag-dot"></div>hiperfarol.com.br</div>
+        <div class="ig-tag-item"><div class="ig-tag-dot"></div>Entrega grátis — Almenara</div>
+      </div>
+      <div class="grid3">
+        <div class="gthumb"></div><div class="gthumb"></div><div class="gthumb"></div>
+        <div class="gthumb"></div><div class="gthumb"></div><div class="gthumb"></div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="an-sec">03 · Análise competitiva</div>
+    <div class="an-title">HIPER FAROL</div>
+    <div class="an-cols">
+      <div class="an-col pos">
+        <div class="an-col-label">✓ O que fazem bem</div>
+        <div class="an-item">Identidade regional forte — "Orgulho de Ser Almenarense" gera pertencimento real</div>
+        <div class="an-item">WhatsApp ativo como canal direto com o cliente</div>
+        <div class="an-item">Entrega grátis como diferencial local</div>
+        <div class="an-item">Site próprio — presença além das redes</div>
+      </div>
+      <div class="an-col neg">
+        <div class="an-col-label">✗ O que não fazem</div>
+        <div class="an-item">Sem campanhas pagas rastreadas</div>
+        <div class="an-item">Sem funil de conversão estruturado</div>
+        <div class="an-item">Sem segmentação por perfil de compra</div>
+        <div class="an-item">Sem mensuração de resultado digital</div>
+      </div>
+    </div>
+    <div class="gap-note">
+      <strong style="color:var(--red)">Gap de mercado:</strong> O Hiper Farol domina o sentimento local — mas opera sem dados. A Boa Compra pode superar isso combinando proximidade com estratégia e mensuração reais.
+    </div>
+  </div>
+</div>
+
+<!-- 9 — MERCADO BH -->
+<div class="slide dk" id="s8">
+  <div class="left">
+    <div>
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:14px">03 · Concorrente — Escala Nacional</div>
+      <div class="ig-prof">
+        <div class="ig-av" style="background:#1a1a1a;border:1px solid #333;font-size:10px">MBH</div>
+        <div>
+          <div class="ig-name">@supermercadosbh</div>
+          <div class="ig-sub">Canal YouTube ativo</div>
+        </div>
+      </div>
+      <div class="ig-stats-row">
+        <div class="ig-stat"><div class="ig-stat-n" style="color:var(--red)">1M</div><div class="ig-stat-l">Seguidores</div></div>
+        <div class="ig-stat"><div class="ig-stat-n">400+</div><div class="ig-stat-l">Lojas</div></div>
+        <div class="ig-stat"><div class="ig-stat-n">4º</div><div class="ig-stat-l">Brasil</div></div>
+      </div>
+      <div class="ig-bio-text">4º maior supermercado do Brasil.<br>Dono do Cruzeiro Sport Club.</div>
+      <div class="ig-tags">
+        <div class="ig-tag-item"><div class="ig-tag-dot"></div>2 cidades concorrentes diretos com Boa Compra</div>
+        <div class="ig-tag-item"><div class="ig-tag-dot"></div>MG e ES — rede nacional com força regional</div>
+        <div class="ig-tag-item"><div class="ig-tag-dot"></div>Promoções diárias no Instagram + YouTube</div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div>
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:8px">03 · Análise competitiva</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:18px">MERCADO BH</div>
+    </div>
+    <div style="background:#111;border:1px solid var(--wire);padding:14px;border-radius:3px;margin-bottom:10px">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-bottom:10px">Como competem digitalmente</div>
+      <div class="action-item hl" style="margin-bottom:6px">
+        <div class="ai-dot"></div>
+        <div><div class="action-title">Volume de conteúdo</div><div class="action-text">Promoções diárias no Instagram — escala de rede nacional com adaptação regional</div></div>
+      </div>
+      <div class="action-item" style="margin-bottom:6px">
+        <div class="ai-dot"></div>
+        <div><div class="action-title">Presença multicanal</div><div class="action-text">Instagram + YouTube + website — investimento nacional distribuído regionalmente</div></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-dot"></div>
+        <div><div class="action-title">Vínculo emocional</div><div class="action-text">Patrocínio do Cruzeiro — identidade mineira usada como alavanca de pertencimento</div></div>
+      </div>
+    </div>
+    <div style="background:rgba(74,173,122,.08);border:1px solid rgba(74,173,122,.2);padding:14px;border-radius:3px">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:#4aad7a;text-transform:uppercase;margin-bottom:10px">Onde a Boa Compra vence</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.45);line-height:1.55">
+        Proximidade real com o cliente local. Velocidade de adaptação por praça. O gerente que conhece o cliente pelo nome é vantagem que rede nacional de 400 lojas não replica. <strong style="color:#fff">Você não compete em volume — compete em relevância.</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 — BENCHMARK CARREFOUR -->
+<div class="slide lt" id="s9">
+  <div class="heading">
+    <div class="sec">03 · Benchmark de Mercado</div>
+    <h2>O QUE OS LÍDERES FAZEM QUE A MAIORIA NÃO FAZ</h2>
+  </div>
+  <div class="grid">
+    <div class="bk-card">
+      <div class="bk-n">01</div>
+      <div class="bk-title">Mensagem única, ano inteiro</div>
+      <div class="bk-text">"Sempre Rende Mais" — uma campanha, 12 meses, todos os canais com a mesma voz. TV, rádio, digital e PDV sincronizados.</div>
+      <div class="bk-note">Carrefour Brasil, 2026 — criação Publicis Brasil</div>
+    </div>
+    <div class="bk-card">
+      <div class="bk-n">02</div>
+      <div class="bk-title">Editorial conectado ao negócio</div>
+      <div class="bk-text">Dados mostram alta de salmão antes da Páscoa → conteúdo editorial sobre receitas chega 15 dias antes → vendas crescem. Planejamento, não improviso.</div>
+      <div class="bk-note">Cortex Brand — IA para mensuração editorial em tempo real</div>
+    </div>
+    <div class="bk-card">
+      <div class="bk-n">03</div>
+      <div class="bk-title">Funcionários como influenciadores</div>
+      <div class="bk-text">O açougueiro que ensina o corte perfeito tem mais credibilidade que qualquer anúncio. Humaniza a marca, reduz custo de produção, gera conteúdo autêntico.</div>
+      <div class="bk-note">Estratégia replicável em qualquer escala — inclusive regional</div>
+    </div>
+    <div class="bk-card">
+      <div class="bk-n">04</div>
+      <div class="bk-title">Dados em cada touchpoint</div>
+      <div class="bk-text">Cada post, cada campanha com impacto mensurável. 15 trilhões de combinações de dados para personalizar a interação com o consumidor. A diferença não é orçamento — é estrutura.</div>
+      <div class="bk-note">A mesma lógica funciona com ferramentas acessíveis: Pixel + GTM + UTM</div>
+    </div>
+  </div>
+</div>
+
+<!-- 11 — TÁTICAS DO SETOR -->
+<div class="slide dk" id="s10">
+  <div class="heading">
+    <div class="sec">03 · Benchmark de Mercado</div>
+    <h2>TÁTICAS QUE FUNCIONAM NO VAREJO ALIMENTAR</h2>
+  </div>
+  <div class="tactics">
+    <div class="tac">
+      <div class="tac-n">01</div>
+      <div class="tac-title">Click & Collect</div>
+      <div class="tac-text">Compra online, retira na loja. Reduz fricção na decisão, aumenta ticket médio e frequência de visita.</div>
+    </div>
+    <div class="tac">
+      <div class="tac-n">02</div>
+      <div class="tac-title">Cupom rastreável</div>
+      <div class="tac-text">QR code físico + link UTM. Cada ação — outdoor, rádio, post — com ROI calculável.</div>
+    </div>
+    <div class="tac">
+      <div class="tac-n">03</div>
+      <div class="tac-title">WhatsApp segmentado</div>
+      <div class="tac-text">Mensagem diferente por cidade e perfil de compra. Menos spam, mais abertura, mais resultado.</div>
+    </div>
+    <div class="tac">
+      <div class="tac-n">04</div>
+      <div class="tac-title">Fidelidade RFV</div>
+      <div class="tac-text">Recompensa quem compra com frequência. Aumenta recorrência e ticket médio com dados.</div>
+    </div>
+    <div class="tac">
+      <div class="tac-n">05</div>
+      <div class="tac-title">Google Meu Negócio</div>
+      <div class="tac-text">Uma ficha por loja — captura quem busca "supermercado perto de mim". Decisão já tomada.</div>
+    </div>
+    <div class="tac">
+      <div class="tac-n">06</div>
+      <div class="tac-title">Micro-influenciadores</div>
+      <div class="tac-text">5K a 50K seguidores na cidade. Alcance relevante, custo baixo, credibilidade genuína.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 12 — SEP PÚBLICO -->
+<div class="slide sep" id="s11-sep">
+  <div class="bg-word">PÚBLICO</div>
+  <div class="center">
+    <div class="sep-n">Seção 04</div>
+    <div class="sep-title">PERFIL DO<br><em>PÚBLICO</em></div>
+    <div class="sep-line"></div>
+  </div>
+</div>
+
+<!-- 13 — PERFIL CONSUMIDOR -->
+<div class="slide dk" id="s11">
+  <div class="top-strip">
+    <div class="sec">04 · Público</div>
+    <h2>QUEM É O CLIENTE DA BOA COMPRA</h2>
+  </div>
+  <div class="content">
+    <div class="stat-side">
+      <div class="pub-stat">
+        <div class="pub-n">38<span style="font-size:32px">%</span></div>
+        <div class="pub-info">
+          <div class="pub-label">Fazem várias compras menores ao mês</div>
+          <div class="pub-desc">Alto potencial para engajamento recorrente, fidelidade e retenção. Compram com frequência — o canal certo faz eles comprarem mais.</div>
+        </div>
+      </div>
+      <div class="pub-stat">
+        <div class="pub-n">37<span style="font-size:32px">%</span></div>
+        <div class="pub-info">
+          <div class="pub-label">Fazem uma grande compra mensal</div>
+          <div class="pub-desc">Alto potencial de ticket médio e upsell no momento da compra. Uma oferta certa na hora certa faz a diferença.</div>
+        </div>
+      </div>
+    </div>
+    <div class="insights">
+      <div class="insight">
+        <div class="ins-dot"></div>
+        <div class="ins-text"><strong>Critério de decisão:</strong> Preço, proximidade e confiança — nessa ordem. Não é só preço. Quem aparece toda semana vira referência antes de virar opção.</div>
+      </div>
+      <div class="insight">
+        <div class="ins-dot"></div>
+        <div class="ins-text"><strong>Lealdade local:</strong> Forte preferência por marcas com presença física próxima. Mudar de supermercado exige razão — não acontece por acaso.</div>
+      </div>
+      <div class="insight">
+        <div class="ins-dot"></div>
+        <div class="ins-text"><strong>Variação por praça:</strong> O que funciona em Teófilo Otoni pode não funcionar em Almenara. Estratégia única para 6 cidades é estratégia que não funciona em nenhuma.</div>
+      </div>
+      <div class="insight">
+        <div class="ins-dot"></div>
+        <div class="ins-text"><strong>Por que isso importa para o plano:</strong> Quem compra várias vezes é o perfil ideal para retenção e engajamento. Quem faz compra única é o perfil ideal para monetização e upsell. O 360° foi desenhado para os dois.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 14 — SEP PLANO 360 -->
+<div class="slide sep" id="s12-sep">
+  <div class="bg-word">360°</div>
+  <div class="center">
+    <div class="sep-n">Seção 05</div>
+    <div class="sep-title">PLANO<br><em>360°</em></div>
+    <div class="sep-line"></div>
+  </div>
+</div>
+
+<!-- 15 — RODA 360 -->
+<div class="slide dk" id="s12">
+  <div class="wheel-side">
+    <div class="wheel-tag">05 · Visão Geral</div>
+    <svg viewBox="0 0 300 300" width="280" height="280">
+      <style>
+        .wseg{transition:opacity .2s;cursor:pointer}
+        .wseg:hover{opacity:.8}
+        @keyframes wspin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        .wring{transform-origin:150px 150px;animation:wspin 36s linear infinite}
+      </style>
+      <g class="wring">
+        <path class="wseg" d="M150 40 A110 110 0 0 1 260 150 L215 150 A65 65 0 0 0 150 85 Z" fill="#C00000"/>
+        <path class="wseg" d="M260 150 A110 110 0 0 1 150 260 L150 215 A65 65 0 0 0 215 150 Z" fill="#2a2a2a"/>
+        <path class="wseg" d="M150 260 A110 110 0 0 1 40 150 L85 150 A65 65 0 0 0 150 215 Z" fill="#1a1a1a"/>
+        <path class="wseg" d="M40 150 A110 110 0 0 1 150 40 L150 85 A65 65 0 0 0 85 150 Z" fill="#6B0000"/>
+        <line x1="150" y1="40" x2="150" y2="85" stroke="#0d0d0d" stroke-width="4"/>
+        <line x1="260" y1="150" x2="215" y2="150" stroke="#0d0d0d" stroke-width="4"/>
+        <line x1="150" y1="260" x2="150" y2="215" stroke="#0d0d0d" stroke-width="4"/>
+        <line x1="40" y1="150" x2="85" y2="150" stroke="#0d0d0d" stroke-width="4"/>
+      </g>
+      <circle cx="150" cy="150" r="62" fill="#0d0d0d"/>
+      <circle cx="150" cy="150" r="60" fill="#111" stroke="#1e1e1e" stroke-width="1"/>
+      <text x="150" y="145" text-anchor="middle" fill="white" font-family="Oswald,sans-serif" font-size="11" font-weight="700" letter-spacing="1">METRIFI-</text>
+      <text x="150" y="160" text-anchor="middle" fill="white" font-family="Oswald,sans-serif" font-size="11" font-weight="700" letter-spacing="1">CAÇÃO</text>
+      <text x="150" y="174" text-anchor="middle" fill="#C00000" font-family="Oswald,sans-serif" font-size="8" letter-spacing="1">O EIXO</text>
+    </svg>
+  </div>
+  <div class="info-side">
+    <div>
+      <div class="info-title">OS 4 PILARES<br>DO <em>CRESCIMENTO</em></div>
+      <div class="info-tagline">"Vender para mais pessoas, mais vezes e por maior valor."</div>
+    </div>
+    <div class="pillar-list">
+      <div class="pillar">
+        <div class="p-dot" style="background:#C00000"></div>
+        <div><div class="p-name">Aquisição</div><div class="p-desc">Fazer novas pessoas chegarem até você — todos os canais</div></div>
+      </div>
+      <div class="pillar">
+        <div class="p-dot" style="background:#2a2a2a;border:1px solid #444"></div>
+        <div><div class="p-name">Engajamento</div><div class="p-desc">Construir relacionamento antes de tentar vender</div></div>
+      </div>
+      <div class="pillar">
+        <div class="p-dot" style="background:#1a1a1a;border:1px solid #444"></div>
+        <div><div class="p-name">Monetização</div><div class="p-desc">Converter atenção em receita rastreável</div></div>
+      </div>
+      <div class="pillar">
+        <div class="p-dot" style="background:#6B0000"></div>
+        <div><div class="p-name">Retenção</div><div class="p-desc">Fazer o cliente voltar com mais frequência</div></div>
+      </div>
+      <div class="pillar">
+        <div class="p-dot" style="background:transparent;border:1px dashed #444"></div>
+        <div><div class="p-name" style="color:var(--gray)">Metrificação</div><div class="p-desc">O eixo central que conecta e valida cada pilar</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 16 — AQUISIÇÃO -->
+<div class="slide pilar dk" id="s13">
+  <div class="p-left">
+    <div class="p-bg-letter">A</div>
+    <div class="p-left-tag">Pilar 01</div>
+    <div class="p-left-title">AQUISIÇÃO</div>
+    <div class="p-left-def">Qualquer canal que faz um cliente em potencial chegar até você pela primeira vez — digital ou offline.</div>
+  </div>
+  <div class="p-right">
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Meta Ads</div><div class="action-text">Campanhas de oferta com segmentação por cidade e raio geográfico — verba onde o cliente está</div></div>
+    </div>
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Google Ads — busca ativa</div><div class="action-text">"Supermercado em [cidade]", "promoção hoje" — quem pesquisa já quer comprar</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">YouTube / TikTok</div><div class="action-text">Vídeos curtos com bastidores, equipe, ofertas — reconhecimento de marca com custo baixo</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Offline integrado ao digital</div><div class="action-text">Outdoor, rádio e carro de som com QR code rastreável — cada ação offline com resultado mensurável</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Micro-influenciadores locais</div><div class="action-text">5K a 50K seguidores na cidade — credibilidade local genuína, custo acessível</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Google Meu Negócio por loja</div><div class="action-text">Uma ficha otimizada por unidade — aparece em "supermercado perto de mim"</div></div>
+    </div>
+    <div class="p-metric">
+      <div class="pm-block">
+        <div class="pm-label">Métrica principal</div>
+        <div class="pm-text">CPA — custo por novo cliente por canal e por cidade</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 17 — ENGAJAMENTO -->
+<div class="slide pilar dk" id="s14">
+  <div class="p-left">
+    <div class="p-bg-letter">E</div>
+    <div class="p-left-tag">Pilar 02</div>
+    <div class="p-left-title">ENGAJAMENTO</div>
+    <div class="p-left-def">A ponte entre conhecer a marca e decidir comprar. Quem se engaja compra mais, paga mais e indica mais.</div>
+  </div>
+  <div class="p-right">
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Conteúdo de valor semanal</div><div class="action-text">Receitas com produtos em promoção, dicas de economia, bastidores da loja. Conteúdo que o cliente salva e compartilha.</div></div>
+    </div>
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Stories e Reels com oferta da semana</div><div class="action-text">Visual, rápido, prático. Oferta encerrada toda sexta — cria urgência e recorrência.</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">WhatsApp Business por loja</div><div class="action-text">Atendimento com voz humana — sem robô. O gerente que responde é o mesmo que o cliente vê na loja.</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Calendário sazonal com antecedência</div><div class="action-text">Natal, Páscoa, Dia das Mães — planejados com 30 dias de antecedência. Quem planeja comunica antes da concorrência.</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Clube de Desconto como motor de contato</div><div class="action-text">Todo benefício é uma razão de falar com o cliente. Transformar desconto em relacionamento.</div></div>
+    </div>
+    <div class="p-metric">
+      <div class="pm-block">
+        <div class="pm-label">Métricas</div>
+        <div class="pm-text">Taxa de engajamento · Crescimento de seguidores/mês · Taxa de abertura WhatsApp</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 18 — MONETIZAÇÃO -->
+<div class="slide pilar dk" id="s15">
+  <div class="p-left">
+    <div class="p-bg-letter">M</div>
+    <div class="p-left-tag">Pilar 03</div>
+    <div class="p-left-title">MONETIZAÇÃO</div>
+    <div class="p-left-def">Transformar interesse em compra. É aqui que o investimento vira resultado rastreável — e a diferença entre despesa e receita é calculada.</div>
+  </div>
+  <div class="p-right">
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Pixel de conversão instalado</div><div class="action-text">Facebook Pixel + Google Tag Manager em todas as plataformas — base de tudo que vem depois</div></div>
+    </div>
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Cupom rastreável</div><div class="action-text">QR code físico + link UTM — sabe de onde veio cada compra, cada canal com seu número</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Landing page por promoção</div><div class="action-text">Cada campanha com sua página de destino — mede conversão real, não só clique</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Segmentação por cidade</div><div class="action-text">O que vende em Almenara pode não vender em Teófilo Otoni — dados definem o que vai em cada praça</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Teste A/B de criativos</div><div class="action-text">Duas versões de cada anúncio — a que converte mais escala, a que não converte para</div></div>
+    </div>
+    <div class="p-metric">
+      <div class="pm-block">
+        <div class="pm-label">Métricas</div>
+        <div class="pm-text">ROAS por campanha · Custo por Venda · Ticket médio por canal</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 19 — RETENÇÃO -->
+<div class="slide pilar dk" id="s16">
+  <div class="p-left">
+    <div class="p-bg-letter">R</div>
+    <div class="p-left-tag">Pilar 04</div>
+    <div class="p-left-title">RETENÇÃO</div>
+    <div class="p-left-def">Reter é 5× mais barato que adquirir. Um cliente que volta 3 vezes vale mais que 3 clientes que compram uma vez.</div>
+  </div>
+  <div class="p-right">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+      <div style="background:#0f1f18;border:1px solid #2a6040;padding:10px;border-radius:3px">
+        <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:#4aad7a;text-transform:uppercase;margin-bottom:5px">VIP</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.5)">Alta recência + frequência + valor → ofertas exclusivas e antecipadas</div>
+      </div>
+      <div style="background:#181a1a;border:1px solid #333;padding:10px;border-radius:3px">
+        <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:#888;text-transform:uppercase;margin-bottom:5px">Ativo</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4)">Compra regular → manter engajado, aumentar frequência gradualmente</div>
+      </div>
+      <div style="background:#1c1212;border:1px solid #5a3030;padding:10px;border-radius:3px">
+        <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:#cc4444;text-transform:uppercase;margin-bottom:5px">Em Risco</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4)">30–60 dias ausente → régua de reativação com oferta específica</div>
+      </div>
+      <div style="background:#1a1010;border:1px solid #4a2020;padding:10px;border-radius:3px">
+        <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:#994444;text-transform:uppercase;margin-bottom:5px">Perdido</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.35)">+90 dias → oferta de recuperação agressiva ou exclusão da base</div>
+      </div>
+    </div>
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Régua de reativação automática</div><div class="action-text">Mensagem certa · perfil certo · momento certo — 30, 60 e 90 dias sem comprar</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Histórico como base da próxima oferta</div><div class="action-text">Quem comprou frango recebe promoção de frango — não de qualquer coisa</div></div>
+    </div>
+    <div class="p-metric">
+      <div class="pm-block">
+        <div class="pm-label">Métricas</div>
+        <div class="pm-text">Frequência de compra · Taxa de reativação · Churn rate mensal</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 20 — METRIFICAÇÃO -->
+<div class="slide" id="s17">
+  <div class="top">
+    <div class="sec">05 · Plano 360°</div>
+    <h2>METRIFICAÇÃO — O EIXO QUE CONECTA TUDO</h2>
+    <p>"Sem dados, você está investindo no escuro. Com dados, cada real tem um destino rastreável."</p>
+  </div>
+  <div class="body">
+    <div class="metricas">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:6px">O que vamos medir</div>
+      <div class="met-row"><div class="met-dot"></div><div class="met-name"><strong>ROAS</strong></div><div class="met-desc">Retorno sobre investimento por campanha e canal</div></div>
+      <div class="met-row"><div class="met-dot"></div><div class="met-name"><strong>CPA</strong></div><div class="met-desc">Custo por novo cliente por cidade</div></div>
+      <div class="met-row"><div class="met-dot"></div><div class="met-name"><strong>Frequência de compra</strong></div><div class="met-desc">Quantas vezes o cliente volta por mês</div></div>
+      <div class="met-row"><div class="met-dot"></div><div class="met-name"><strong>Taxa de reativação</strong></div><div class="met-desc">% de inativos que voltaram a comprar</div></div>
+      <div class="met-row"><div class="met-dot"></div><div class="met-name"><strong>ROI do Clube</strong></div><div class="met-desc">O desconto dado está gerando retorno real?</div></div>
+      <div class="met-row"><div class="met-dot"></div><div class="met-name"><strong>Ticket médio por canal</strong></div><div class="met-desc">Quem compra mais: Meta, Google ou WhatsApp?</div></div>
+    </div>
+    <div class="fases">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:2px">Implementação</div>
+      <div class="fase f1">
+        <div class="fase-label">Fase 1 — Imediato</div>
+        <div class="fase-title">Instalar a base</div>
+        <div class="fase-text">Facebook Pixel + Google Tag Manager + WhatsApp Business configurado por loja</div>
+      </div>
+      <div class="fase f2">
+        <div class="fase-label">Fase 2 — 30 dias</div>
+        <div class="fase-title">Rastrear campanhas</div>
+        <div class="fase-text">UTM links + QR codes + landing pages por promoção ativas</div>
+      </div>
+      <div class="fase f3">
+        <div class="fase-label">Fase 3 — 60–90 dias</div>
+        <div class="fase-title">Dashboard integrado</div>
+        <div class="fase-text">Todas as fontes em um painel — decisão baseada em dado, não intuição</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 21 — ENCERRAMENTO -->
+<div class="slide dk" id="s18">
+  <div class="bg-txt">OBRIGADO</div>
+  <div class="center">
+    <div class="thank">OBRI<em>GADO</em>.</div>
+    <div class="rule"></div>
+    <div class="credits">Supermercados Boa Compra × V4 Carvalho & Co · Setembro 2026</div>
+  </div>
+</div>
+
+  </div><!-- /canvas -->
+
+  <div id="progress"><div id="progress-bar"></div></div>
+
+  <div id="hud">
+    <button class="hud-btn" onclick="go(-1)">◀</button>
+    <span id="counter">1 · 21</span>
+    <button class="hud-btn" onclick="go(1)">▶</button>
+  </div>
+</div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+let cur = 0;
+
+function show(n){
+  cur = Math.max(0, Math.min(slides.length-1, n));
+  slides.forEach((s,i) => {
+    if(i === cur){
+      s.style.display = '';
+      s.classList.add('on');
+    } else {
+      s.style.display = 'none';
+      s.classList.remove('on');
+    }
+  });
+  document.getElementById('counter').textContent = `${cur+1} · ${slides.length}`;
+  document.getElementById('progress-bar').style.width = `${(cur/(slides.length-1))*100}%`;
+  scaleCanvas();
+}
+
+function go(d){ show(cur+d) }
+
+function scaleCanvas(){
+  const arena = document.getElementById('arena');
+  const canvas = document.getElementById('canvas');
+  const aw = arena.clientWidth, ah = arena.clientHeight - 40;
+  const s = Math.min(aw/960, ah/540) * 0.97;
+  canvas.style.transform = `scale(${s})`;
+  canvas.style.marginBottom = '40px';
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='ArrowDown') go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp') go(-1);
+});
+
+window.addEventListener('resize', scaleCanvas);
+show(0);
+</script>
+</body>
+</html>
