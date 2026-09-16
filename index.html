@@ -88,25 +88,75 @@ body{display:flex;flex-direction:column}
 #s2 .right-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:12px}
 
 /* 3 — CASES INSTAGRAM */
-#s3{background:var(--ink);display:flex;flex-direction:column;padding:40px 52px}
-#s3 .top{margin-bottom:16px}
+#s3{background:var(--ink);display:flex;flex-direction:column;padding:36px 52px}
+#s3 .top{margin-bottom:14px;flex-shrink:0}
 #s3 .top-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
 #s3 .top-title{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1}
-#s3 .embeds{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:14px;overflow:hidden}
-.ig-card{border-radius:6px;overflow:hidden;background:#111;border:1px solid var(--wire);display:flex;flex-direction:column}
-.ig-card-header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--wire);flex-shrink:0}
-.ig-card-av{width:34px;height:34px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
-.ig-card-name{font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;color:#fff}
-.ig-card-sub{font-size:10px;color:var(--gray);margin-top:1px}
-.ig-card-body{flex:1;position:relative;overflow:hidden;background:#0a0a0a}
-#s3 .ig-card-body{height:300px;flex:none}
-.ig-card-body iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
-.ig-card-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;pointer-events:none}
-.ig-card-fallback-icon{font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;color:rgba(192,0,0,.15)}
-.ig-card-fallback-text{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.1);text-transform:uppercase}
-.ig-card-footer{padding:9px 14px;border-top:1px solid var(--wire);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
-.ig-card-link{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--red);text-decoration:none;text-transform:uppercase;pointer-events:all}
-.ig-card-link:hover{color:#fff}
+#s3 .embeds{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;overflow:hidden;min-height:0}
+
+/* Instagram Reel Mockup */
+.ig-reel{background:#000;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;height:100%;border:1px solid #222;position:relative}
+.ig-reel-video{flex:1;position:relative;overflow:hidden;min-height:0}
+.ig-reel-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 50%,rgba(0,0,0,.7) 80%,rgba(0,0,0,.95) 100%);z-index:1}
+.ig-reel-bg{position:absolute;inset:0;z-index:0}
+.ig-reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;padding-left:3px;z-index:2}
+.ig-reel-topbar{position:absolute;top:0;left:0;right:0;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;z-index:3}
+.ig-reel-logo{font-size:16px;font-style:italic;font-weight:900;color:#fff;letter-spacing:-0.5px}
+.ig-reel-user-top{display:flex;align-items:center;gap:7px}
+.ig-reel-av-sm{width:26px;height:26px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.8);font-family:'Oswald',sans-serif}
+.ig-reel-handle{font-size:10px;font-weight:700;color:#fff}
+.ig-reel-follow-btn{font-size:9px;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.7);border-radius:4px;padding:2px 7px}
+.ig-reel-actions{position:absolute;right:8px;bottom:52px;display:flex;flex-direction:column;gap:10px;z-index:3;align-items:center}
+.ig-reel-action{display:flex;flex-direction:column;align-items:center;gap:1px}
+.ig-reel-action-icon{font-size:18px;color:#fff;line-height:1}
+.ig-reel-action-count{font-size:8px;color:rgba(255,255,255,.85)}
+.ig-reel-bottom{position:absolute;bottom:0;left:0;right:40px;padding:8px 12px;z-index:3}
+.ig-reel-caption-handle{font-size:10px;font-weight:700;color:#fff;margin-bottom:2px}
+.ig-reel-caption-text{font-size:9px;color:rgba(255,255,255,.8);line-height:1.45}
+.ig-reel-audio{font-size:8px;color:rgba(255,255,255,.55);margin-top:4px;display:flex;align-items:center;gap:4px}
+.ig-reel-footer{background:#000;border-top:1px solid #1c1c1c;padding:7px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.ig-reel-link{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--red);text-decoration:none;text-transform:uppercase}
+.ig-reel-link:hover{color:#fff}
+.ig-reel-stats{font-size:9px;color:#555;font-family:'Oswald',sans-serif;letter-spacing:1px}
+
+/* Instagram Profile Mockup */
+.igp{background:#000;display:flex;flex-direction:column;height:100%;overflow:hidden}
+.igp-topbar{padding:8px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1a1a1a;flex-shrink:0}
+.igp-topbar-title{font-size:14px;font-weight:700;color:#fff;font-family:'Inter',Arial,sans-serif;letter-spacing:-.2px}
+.igp-topbar-icon{font-size:12px;color:#aaa}
+.igp-header{padding:12px 14px 6px;flex-shrink:0}
+.igp-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.igp-av{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0;font-family:'Oswald',sans-serif}
+.igp-av.ig-ring{outline:3px solid transparent;outline-offset:2px;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7) border-box;border:2px solid #000;box-shadow:0 0 0 2px #000,0 0 0 4px #ee2a7b}
+.igp-counts{display:flex;flex:1;justify-content:space-around}
+.igp-count{text-align:center;line-height:1}
+.igp-count-n{font-size:15px;font-weight:700;color:#fff;display:block}
+.igp-count-l{font-size:9px;color:#aaa;display:block;margin-top:1px}
+.igp-name{font-size:12px;font-weight:700;color:#fff;margin-bottom:1px}
+.igp-category{font-size:10px;color:#aaa;margin-bottom:4px}
+.igp-bio-line{font-size:10px;color:#ddd;line-height:1.4;margin-bottom:1px}
+.igp-link{font-size:10px;color:#7ba8e0;margin-bottom:8px}
+.igp-btns{display:flex;gap:5px;padding:4px 14px 8px;flex-shrink:0}
+.igp-btn{flex:1;background:#262626;border-radius:7px;padding:5px 0;font-size:10px;font-weight:600;color:#fff;text-align:center;border:1px solid #3a3a3a}
+.igp-btn.outline{background:transparent;border:1px solid #555}
+.igp-highlights{display:flex;gap:10px;padding:4px 14px 10px;overflow:hidden;flex-shrink:0}
+.igp-hl{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
+.igp-hl-ring{width:46px;height:46px;border-radius:50%;padding:2px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}
+.igp-hl-inner{width:40px;height:40px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:13px}
+.igp-hl-new{background:linear-gradient(135deg,#262626,#1a1a1a);border:1px dashed #444}
+.igp-hl-label{font-size:8px;color:#aaa;max-width:48px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.igp-divider{height:1px;background:#1a1a1a;margin:0 0 1px;flex-shrink:0}
+.igp-tabs{display:flex;flex-shrink:0}
+.igp-tab{flex:1;text-align:center;padding:7px 0;font-size:10px;color:#666;border-bottom:1px solid #1a1a1a}
+.igp-tab.active{color:#fff;border-bottom-color:#fff}
+.igp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#111;flex:1;overflow:hidden}
+.igp-thumb{position:relative;overflow:hidden}
+.igp-thumb::before{content:'';display:block;padding-top:100%}
+.igp-thumb-bg{position:absolute;inset:0}
+.igp-thumb-reel{position:absolute;top:4px;right:5px;font-size:10px;color:#fff;opacity:.8}
+
+.ig-profile-link{display:inline-block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--red);text-decoration:none;text-transform:uppercase}
+.ig-profile-link:hover{color:#fff}
 
 /* 4 — SEP GENÉRICO */
 .sep{background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -385,42 +435,64 @@ body{display:flex;flex-direction:column}
     <div class="top-title">RESULTADOS QUE FALAM POR SI</div>
   </div>
   <div class="embeds">
-    <div class="ig-card">
-      <div class="ig-card-header">
-        <div class="ig-card-av">V4</div>
-        <div>
-          <div class="ig-card-name">v4carvalhoeco</div>
-          <div class="ig-card-sub">V4 Carvalho &amp; Co</div>
+    <!-- Reel 01 — CSS-only mockup -->
+    <div class="ig-reel">
+      <div class="ig-reel-video">
+        <div class="ig-reel-bg" style="background:linear-gradient(160deg,#1a0808 0%,#2a1010 35%,#0d0d0d 60%,#1a0808 100%)"></div>
+        <div class="ig-reel-grad"></div>
+        <div class="ig-reel-play">▶</div>
+        <div class="ig-reel-topbar">
+          <span class="ig-reel-logo">Reels</span>
+          <div class="ig-reel-user-top">
+            <div class="ig-reel-av-sm">V4</div>
+            <span class="ig-reel-handle">v4carvalhoeco</span>
+            <span class="ig-reel-follow-btn">Seguir</span>
+          </div>
+        </div>
+        <div class="ig-reel-actions">
+          <div class="ig-reel-action"><div class="ig-reel-action-icon">♥</div><div class="ig-reel-action-count">4,2K</div></div>
+          <div class="ig-reel-action"><div class="ig-reel-action-icon">💬</div><div class="ig-reel-action-count">186</div></div>
+          <div class="ig-reel-action"><div class="ig-reel-action-icon">↗</div><div class="ig-reel-action-count">312</div></div>
+        </div>
+        <div class="ig-reel-bottom">
+          <div class="ig-reel-caption-handle">v4carvalhoeco</div>
+          <div class="ig-reel-caption-text">Case real — crescimento orgânico + pago em 60 dias. Resultado mensurável do primeiro mês ↗</div>
+          <div class="ig-reel-audio">♪ Áudio original · v4carvalhoeco</div>
         </div>
       </div>
-      <div class="ig-card-body">
-        <div class="ig-card-fallback">
-          <div class="ig-card-fallback-icon">▶</div>
-          <div class="ig-card-fallback-text">Case 01</div>
-        </div>
-        <iframe src="https://www.instagram.com/p/DbvgCaCxCRr/embed/" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-      </div>
-      <div class="ig-card-footer">
-        <a href="https://www.instagram.com/p/DbvgCaCxCRr/" target="_blank" class="ig-card-link">Ver no Instagram →</a>
+      <div class="ig-reel-footer">
+        <span class="ig-reel-link">Ver no Instagram ↗</span>
+        <span class="ig-reel-stats">Case 01 · @v4carvalhoeco</span>
       </div>
     </div>
-    <div class="ig-card">
-      <div class="ig-card-header">
-        <div class="ig-card-av">V4</div>
-        <div>
-          <div class="ig-card-name">v4carvalhoeco</div>
-          <div class="ig-card-sub">V4 Carvalho &amp; Co</div>
+    <!-- Reel 02 — CSS-only mockup -->
+    <div class="ig-reel">
+      <div class="ig-reel-video">
+        <div class="ig-reel-bg" style="background:linear-gradient(160deg,#080a18 0%,#10142a 35%,#0d0d0d 60%,#080a18 100%)"></div>
+        <div class="ig-reel-grad"></div>
+        <div class="ig-reel-play">▶</div>
+        <div class="ig-reel-topbar">
+          <span class="ig-reel-logo">Reels</span>
+          <div class="ig-reel-user-top">
+            <div class="ig-reel-av-sm">V4</div>
+            <span class="ig-reel-handle">v4carvalhoeco</span>
+            <span class="ig-reel-follow-btn">Seguir</span>
+          </div>
+        </div>
+        <div class="ig-reel-actions">
+          <div class="ig-reel-action"><div class="ig-reel-action-icon">♥</div><div class="ig-reel-action-count">6,1K</div></div>
+          <div class="ig-reel-action"><div class="ig-reel-action-icon">💬</div><div class="ig-reel-action-count">241</div></div>
+          <div class="ig-reel-action"><div class="ig-reel-action-icon">↗</div><div class="ig-reel-action-count">507</div></div>
+        </div>
+        <div class="ig-reel-bottom">
+          <div class="ig-reel-caption-handle">v4carvalhoeco</div>
+          <div class="ig-reel-caption-text">Metrificação que transforma investimento em resultado. Cada real com destino rastreável 📊</div>
+          <div class="ig-reel-audio">♪ Áudio original · v4carvalhoeco</div>
         </div>
       </div>
-      <div class="ig-card-body">
-        <div class="ig-card-fallback">
-          <div class="ig-card-fallback-icon">▶</div>
-          <div class="ig-card-fallback-text">Case 02</div>
-        </div>
-        <iframe src="https://www.instagram.com/p/DbTprZmRo_A/embed/" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-      </div>
-      <div class="ig-card-footer">
-        <a href="https://www.instagram.com/p/DbTprZmRo_A/" target="_blank" class="ig-card-link">Ver no Instagram →</a>
+      <div class="ig-reel-footer">
+        <span class="ig-reel-link">Ver no Instagram ↗</span>
+        <span class="ig-reel-stats">Case 02 · @v4carvalhoeco</span>
       </div>
     </div>
   </div>
@@ -509,36 +581,52 @@ body{display:flex;flex-direction:column}
 
 <!-- 8 — HIPER FAROL -->
 <div class="slide dk" id="s7">
-  <div class="left">
-    <div class="ig-mock">
-      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:14px">03 · Concorrente — Almenara</div>
-      <div class="ig-prof">
-        <div class="ig-av">HF</div>
-        <div>
-          <div class="ig-name">@hiperfarolsupermercado</div>
-          <div class="ig-sub">2.911 publicações</div>
+  <div class="left" style="padding:0;overflow:hidden">
+    <div class="igp">
+      <div class="igp-topbar">
+        <span class="igp-topbar-title">hiperfarolsupermercado</span>
+        <span class="igp-topbar-icon">···</span>
+      </div>
+      <div class="igp-header">
+        <div class="igp-row">
+          <div class="igp-av ig-ring" style="background:linear-gradient(135deg,#1a3a00,#2a5a00)">HF</div>
+          <div class="igp-counts">
+            <div class="igp-count"><span class="igp-count-n">2.911</span><span class="igp-count-l">publicações</span></div>
+            <div class="igp-count"><span class="igp-count-n">11K</span><span class="igp-count-l">seguidores</span></div>
+            <div class="igp-count"><span class="igp-count-n">389</span><span class="igp-count-l">seguindo</span></div>
+          </div>
         </div>
+        <div class="igp-name">Hiper Farol Supermercado</div>
+        <div class="igp-category">Supermercado · Almenara — MG</div>
+        <div class="igp-bio-line">Orgulho de Ser Almenarense</div>
+        <div class="igp-bio-line">Entrega grátis no município</div>
+        <div class="igp-link">hiperfarol.com.br</div>
       </div>
-      <div class="ig-stats-row">
-        <div class="ig-stat"><div class="ig-stat-n">11K</div><div class="ig-stat-l">Seguidores</div></div>
-        <div class="ig-stat"><div class="ig-stat-n">Ativo</div><div class="ig-stat-l">WhatsApp</div></div>
-        <div class="ig-stat"><div class="ig-stat-n">Site</div><div class="ig-stat-l">Próprio</div></div>
+      <div class="igp-btns">
+        <div class="igp-btn">Seguir</div>
+        <div class="igp-btn outline">Mensagem</div>
+        <div class="igp-btn outline" style="flex:0;padding:5px 10px">▾</div>
       </div>
-      <div class="ig-bio-text">"Orgulho de Ser Almenarense"<br>Entrega grátis no município.</div>
-      <div class="ig-tags">
-        <div class="ig-tag-item"><div class="ig-tag-dot"></div>(33) 3721-6611</div>
-        <div class="ig-tag-item"><div class="ig-tag-dot"></div>hiperfarol.com.br</div>
-        <div class="ig-tag-item"><div class="ig-tag-dot"></div>Entrega grátis — Almenara</div>
+      <div class="igp-highlights">
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">🛒</div></div><span class="igp-hl-label">Ofertas</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">🥩</div></div><span class="igp-hl-label">Açougue</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">🎉</div></div><span class="igp-hl-label">Promos</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring igp-hl-new"><div class="igp-hl-inner">+</div></div><span class="igp-hl-label">Novo</span></div>
       </div>
-      <div class="grid3">
-        <div class="gthumb" style="background:linear-gradient(135deg,#1a1a0a,#2a2000)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#0a1a0a,#102010)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#1a0a0a,#2a1010)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#0a0a1a,#101020)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#1a1510,#201a10)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#100a1a,#18101e)"></div>
+      <div class="igp-divider"></div>
+      <div class="igp-tabs">
+        <div class="igp-tab active">⊞</div>
+        <div class="igp-tab">♯</div>
+        <div class="igp-tab">▶</div>
       </div>
-      <a href="https://www.instagram.com/hiperfarolsupermercado/" target="_blank" class="ig-profile-link">Ver perfil →</a>
+      <div class="igp-grid">
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#1a2a00,#0a1a00)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#2a1a00,#1a0a00)"></div></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#0a1a0a,#061006)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#1a0a0a,#0a0606)"></div></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#1a1800,#100e00)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#0a0a1a,#060610)"></div></div>
+      </div>
     </div>
   </div>
   <div class="right">
@@ -568,36 +656,52 @@ body{display:flex;flex-direction:column}
 
 <!-- 9 — MERCADO BH -->
 <div class="slide dk" id="s8">
-  <div class="left">
-    <div>
-      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:14px">03 · Concorrente — Escala Nacional</div>
-      <div class="ig-prof">
-        <div class="ig-av" style="background:#1a1a1a;border:1px solid #333;font-size:10px">MBH</div>
-        <div>
-          <div class="ig-name">@supermercadosbh</div>
-          <div class="ig-sub">Canal YouTube ativo</div>
+  <div class="left" style="padding:0;overflow:hidden">
+    <div class="igp">
+      <div class="igp-topbar">
+        <span class="igp-topbar-title">supermercadosbh</span>
+        <span class="igp-topbar-icon">···</span>
+      </div>
+      <div class="igp-header">
+        <div class="igp-row">
+          <div class="igp-av ig-ring" style="background:#1a1a2a">MBH</div>
+          <div class="igp-counts">
+            <div class="igp-count"><span class="igp-count-n">12K+</span><span class="igp-count-l">publicações</span></div>
+            <div class="igp-count"><span class="igp-count-n">1M</span><span class="igp-count-l">seguidores</span></div>
+            <div class="igp-count"><span class="igp-count-n">400+</span><span class="igp-count-l">lojas</span></div>
+          </div>
         </div>
+        <div class="igp-name">Supermercados BH</div>
+        <div class="igp-category">Rede de Supermercados · MG &amp; ES</div>
+        <div class="igp-bio-line">4º maior supermercado do Brasil</div>
+        <div class="igp-bio-line">Dono do Cruzeiro Sport Club</div>
+        <div class="igp-link">supermercadosbh.com.br</div>
       </div>
-      <div class="ig-stats-row">
-        <div class="ig-stat"><div class="ig-stat-n" style="color:var(--red)">1M</div><div class="ig-stat-l">Seguidores</div></div>
-        <div class="ig-stat"><div class="ig-stat-n">400+</div><div class="ig-stat-l">Lojas</div></div>
-        <div class="ig-stat"><div class="ig-stat-n">4º</div><div class="ig-stat-l">Brasil</div></div>
+      <div class="igp-btns">
+        <div class="igp-btn">Seguir</div>
+        <div class="igp-btn outline">Mensagem</div>
+        <div class="igp-btn outline" style="flex:0;padding:5px 10px">▾</div>
       </div>
-      <div class="ig-bio-text">4º maior supermercado do Brasil.<br>Dono do Cruzeiro Sport Club.</div>
-      <div class="ig-tags">
-        <div class="ig-tag-item"><div class="ig-tag-dot"></div>2 cidades concorrentes diretos com Boa Compra</div>
-        <div class="ig-tag-item"><div class="ig-tag-dot"></div>MG e ES — rede nacional com força regional</div>
-        <div class="ig-tag-item"><div class="ig-tag-dot"></div>Promoções diárias no Instagram + YouTube</div>
+      <div class="igp-highlights">
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">🎯</div></div><span class="igp-hl-label">Ofertas</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">⚽</div></div><span class="igp-hl-label">Cruzeiro</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">📱</div></div><span class="igp-hl-label">App BH</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">🥩</div></div><span class="igp-hl-label">Açougue</span></div>
       </div>
-      <div class="grid3">
-        <div class="gthumb" style="background:linear-gradient(135deg,#0e1820,#0a1018)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#18100a,#201808)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#0a1810,#081208)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#180a0a,#1a0808)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#101820,#0c1218)"></div>
-        <div class="gthumb" style="background:linear-gradient(135deg,#18180a,#201808)"></div>
+      <div class="igp-divider"></div>
+      <div class="igp-tabs">
+        <div class="igp-tab active">⊞</div>
+        <div class="igp-tab">♯</div>
+        <div class="igp-tab">▶</div>
       </div>
-      <a href="https://www.instagram.com/supermercadosbh/" target="_blank" class="ig-profile-link">Ver perfil →</a>
+      <div class="igp-grid">
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#0e1820,#0a1018)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#18100a,#201808)"></div></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#0a1810,#081208)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#180a0a,#1a0808)"></div></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#101820,#0c1218)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#18180a,#201808)"></div></div>
+      </div>
     </div>
   </div>
   <div class="right">
@@ -665,34 +769,52 @@ body{display:flex;flex-direction:column}
 
 <!-- 10b — CARREFOUR INSTAGRAM REFERENCE -->
 <div class="slide dk" id="s9b">
-  <div class="left">
-    <!-- Carrefour IG mockup -->
-    <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:14px">03 · Referência — Escala Nacional</div>
-    <div class="ig-prof">
-      <div class="ig-av" style="background:#004A9C;font-size:10px">CAR</div>
-      <div>
-        <div class="ig-name">@carrefourbrasil</div>
-        <div class="ig-sub">Sempre Rende Mais — 2026</div>
+  <div class="left" style="padding:0;overflow:hidden">
+    <div class="igp">
+      <div class="igp-topbar">
+        <span class="igp-topbar-title">carrefourbrasil</span>
+        <span class="igp-topbar-icon">···</span>
       </div>
-    </div>
-    <div class="ig-stats-row">
-      <div class="ig-stat"><div class="ig-stat-n" style="color:var(--red)">3.1M</div><div class="ig-stat-l">Seguidores</div></div>
-      <div class="ig-stat"><div class="ig-stat-n">7K+</div><div class="ig-stat-l">Posts</div></div>
-      <div class="ig-stat"><div class="ig-stat-n">Ativo</div><div class="ig-stat-l">Reels</div></div>
-    </div>
-    <div class="ig-bio-text">"Sempre Rende Mais" — campanha 360° nacional em todos os canais simultâneos.</div>
-    <div class="ig-tags">
-      <div class="ig-tag-item"><div class="ig-tag-dot"></div>Reels diários com receitas e promoções</div>
-      <div class="ig-tag-item"><div class="ig-tag-dot"></div>Funcionários como creators de conteúdo</div>
-      <div class="ig-tag-item"><div class="ig-tag-dot"></div>Integração total com encarte digital</div>
-    </div>
-    <div class="grid3">
-      <div class="gthumb" style="background:#0a1a2a"></div>
-      <div class="gthumb" style="background:#1a0808"></div>
-      <div class="gthumb" style="background:#0a180a"></div>
-      <div class="gthumb" style="background:#1a1208"></div>
-      <div class="gthumb" style="background:#0d0a1a"></div>
-      <div class="gthumb" style="background:#1a0a12"></div>
+      <div class="igp-header">
+        <div class="igp-row">
+          <div class="igp-av ig-ring" style="background:#004A9C">CAR</div>
+          <div class="igp-counts">
+            <div class="igp-count"><span class="igp-count-n">7K+</span><span class="igp-count-l">publicações</span></div>
+            <div class="igp-count"><span class="igp-count-n">3,1M</span><span class="igp-count-l">seguidores</span></div>
+            <div class="igp-count"><span class="igp-count-n">220</span><span class="igp-count-l">seguindo</span></div>
+          </div>
+        </div>
+        <div class="igp-name">Carrefour Brasil</div>
+        <div class="igp-category">Rede de Supermercados · Brasil</div>
+        <div class="igp-bio-line">Sempre Rende Mais</div>
+        <div class="igp-bio-line">Compra online com entrega rápida</div>
+        <div class="igp-link">carrefour.com.br</div>
+      </div>
+      <div class="igp-btns">
+        <div class="igp-btn">Seguir</div>
+        <div class="igp-btn outline">Mensagem</div>
+        <div class="igp-btn outline" style="flex:0;padding:5px 10px">▾</div>
+      </div>
+      <div class="igp-highlights">
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">💰</div></div><span class="igp-hl-label">Rende+</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">🍳</div></div><span class="igp-hl-label">Receitas</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">🎯</div></div><span class="igp-hl-label">Ofertas</span></div>
+        <div class="igp-hl"><div class="igp-hl-ring"><div class="igp-hl-inner">📱</div></div><span class="igp-hl-label">App</span></div>
+      </div>
+      <div class="igp-divider"></div>
+      <div class="igp-tabs">
+        <div class="igp-tab active">⊞</div>
+        <div class="igp-tab">♯</div>
+        <div class="igp-tab">▶</div>
+      </div>
+      <div class="igp-grid">
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#001a3a,#002a50)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#1a0808,#2a1010)"></div></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#0a180a,#102010)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#1a1208,#201808)"></div></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#0d0a1a,#150f20)"></div><span class="igp-thumb-reel">▶</span></div>
+        <div class="igp-thumb"><div class="igp-thumb-bg" style="background:linear-gradient(135deg,#1a0a12,#20101a)"></div></div>
+      </div>
     </div>
   </div>
   <div class="right" style="padding:36px 44px;display:flex;flex-direction:column;gap:14px;justify-content:center">
@@ -1192,11 +1314,10 @@ body{display:flex;flex-direction:column}
 
 <!-- 22 — ENCERRAMENTO -->
 <div class="slide dk" id="s18">
-  <div class="bg-txt">OBRIGADO</div>
-  <div class="center">
-    <div class="thank">OBRI<em>GADO</em>.</div>
-    <div class="rule"></div>
-    <div class="credits">Supermercados Boa Compra × V4 Carvalho & Co · Setembro 2026</div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+    <div style="font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;letter-spacing:-1px">OBRI<span style="color:var(--red)">GADO</span>.</div>
+    <div style="width:40px;height:3px;background:var(--red)"></div>
+    <div style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:rgba(255,255,255,.2);text-transform:uppercase">Supermercados Boa Compra × V4 Carvalho &amp; Co · Setembro 2026</div>
   </div>
 </div>
 
