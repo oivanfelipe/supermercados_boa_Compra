@@ -405,13 +405,23 @@ body{display:flex;flex-direction:column}
 #s5b .pb-right{flex:1;padding:36px 40px;display:flex;flex-direction:column;justify-content:center;gap:12px}
 
 /* 19 — ENCERRAMENTO */
-#s18{background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-#s18 .bg-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Oswald',sans-serif;font-size:280px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.02);white-space:nowrap;letter-spacing:-4px}
-#s18 .center{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center}
-#s18 .thank{font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;color:#fff;text-transform:uppercase;line-height:.9;white-space:nowrap}
+#s18{background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+#s18::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(192,0,0,.07) 0%,transparent 70%)}
+#s18 .bg-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Oswald',sans-serif;font-size:340px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.015);white-space:nowrap;letter-spacing:-8px;user-select:none}
+#s18 .corner-tl,#s18 .corner-br{position:absolute;width:60px;height:60px;opacity:.15}
+#s18 .corner-tl{top:28px;left:32px;border-top:2px solid var(--red);border-left:2px solid var(--red)}
+#s18 .corner-br{bottom:28px;right:32px;border-bottom:2px solid var(--red);border-right:2px solid var(--red)}
+#s18 .center{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0}
+#s18 .thank{font-family:'Oswald',sans-serif;font-size:116px;font-weight:700;color:#fff;text-transform:uppercase;line-height:.88;white-space:nowrap;letter-spacing:-2px}
 #s18 .thank em{color:var(--red);font-style:normal}
-#s18 .rule{width:40px;height:3px;background:var(--red);margin:20px auto}
-#s18 .credits{font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:rgba(255,255,255,.2);text-transform:uppercase}
+#s18 .rule{width:48px;height:3px;background:var(--red);margin:22px auto 20px}
+#s18 .tagline{font-family:'Oswald',sans-serif;font-size:13px;font-weight:400;letter-spacing:6px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:28px}
+#s18 .contacts{display:flex;gap:32px;align-items:center}
+#s18 .contact-item{text-align:center}
+#s18 .contact-label{font-family:'Oswald',sans-serif;font-size:8px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:4px}
+#s18 .contact-val{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.5px}
+#s18 .contact-sep{width:1px;height:28px;background:var(--wire)}
+#s18 .credits{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:rgba(255,255,255,.12);text-transform:uppercase;position:absolute;bottom:20px;left:50%;transform:translateX(-50%);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -1389,11 +1399,30 @@ body{display:flex;flex-direction:column}
 <!-- 22 — ENCERRAMENTO -->
 <div class="slide dk" id="s18">
   <div class="bg-txt">OBRIGADO</div>
-  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:1">
-    <div style="font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;letter-spacing:-1px">OBRI<span style="color:var(--red)">GADO</span>.</div>
-    <div style="width:40px;height:3px;background:var(--red)"></div>
-    <div style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:rgba(255,255,255,.2);text-transform:uppercase">Supermercados Boa Compra × V4 Carvalho &amp; Co · Setembro 2026</div>
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
+  <div class="center">
+    <div class="thank">OBRI<em>GADO</em>.</div>
+    <div class="rule"></div>
+    <div class="tagline">Supermercados Boa Compra × V4 Carvalho &amp; Co</div>
+    <div class="contacts">
+      <div class="contact-item">
+        <div class="contact-label">Proposta válida até</div>
+        <div class="contact-val">30 de Setembro · 2026</div>
+      </div>
+      <div class="contact-sep"></div>
+      <div class="contact-item">
+        <div class="contact-label">Contato</div>
+        <div class="contact-val">v4carvalho.com.br</div>
+      </div>
+      <div class="contact-sep"></div>
+      <div class="contact-item">
+        <div class="contact-label">Gestor</div>
+        <div class="contact-val">Ivan Lippe · V4 Carvalho &amp; Co</div>
+      </div>
+    </div>
   </div>
+  <div class="credits">Setembro 2026 · Confidencial</div>
 </div>
 
   </div><!-- /canvas -->
