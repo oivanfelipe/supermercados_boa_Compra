@@ -422,9 +422,19 @@ body{display:flex;flex-direction:column}
 #s18 .contact-val{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.5px}
 #s18 .contact-sep{width:1px;height:28px;background:var(--wire)}
 #s18 .credits{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:rgba(255,255,255,.12);text-transform:uppercase;position:absolute;bottom:20px;left:50%;transform:translateX(-50%);white-space:nowrap}
+/* GIF POPUP */
+#gif-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;cursor:pointer}
+#gif-overlay.active{display:flex}
+#gif-overlay img{max-width:88vw;max-height:82vh;border-radius:8px;box-shadow:0 0 60px rgba(0,0,0,.8);cursor:default}
+#gif-overlay .gif-close{position:absolute;top:20px;right:24px;font-size:28px;color:rgba(255,255,255,.6);cursor:pointer;line-height:1;font-family:Arial,sans-serif;user-select:none}
+#gif-overlay .gif-close:hover{color:#fff}
 </style>
 </head>
 <body>
+<div id="gif-overlay" onclick="closeGif()">
+  <span class="gif-close" onclick="closeGif()">✕</span>
+  <img id="gif-img" src="" alt="Exemplo" onclick="event.stopPropagation()">
+</div>
 <div id="arena">
   <div id="canvas">
 
@@ -930,7 +940,7 @@ body{display:flex;flex-direction:column}
       <div class="tac-n">03</div>
       <div class="tac-title">Grupos de Ofertas</div>
       <div class="tac-text">Grupo no WhatsApp com as melhores ofertas da semana. Alcance direto, zero custo de mídia, abertura imediata.</div>
-      <a href="video-wpp.gif" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px;display:inline-block;margin-top:8px">Ver exemplo ↗</a>
+      <button onclick="openGif('video-wpp.gif')" class="ig-profile-link" style="font-size:8px;letter-spacing:2px;display:inline-block;margin-top:8px;background:none;border:none;cursor:pointer;padding:0;color:inherit;font-family:inherit">Ver exemplo ↗</button>
     </div>
     <div class="tac">
       <div class="tac-n">04</div>
@@ -1496,6 +1506,16 @@ function revealEssential(){
 }
 
 show(0);
+
+function openGif(src){
+  document.getElementById('gif-img').src = src;
+  document.getElementById('gif-overlay').classList.add('active');
+}
+function closeGif(){
+  document.getElementById('gif-overlay').classList.remove('active');
+  document.getElementById('gif-img').src = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeGif(); });
 </script>
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
