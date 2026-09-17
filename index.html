@@ -330,6 +330,28 @@ body{display:flex;flex-direction:column}
 #s17 .fase-text{font-size:11px;color:#555;line-height:1.45}
 
 
+/* 18v — VALOR DA PROPOSTA */
+#s18v{background:var(--ink);display:flex;flex-direction:column;padding:36px 52px}
+#s18v .heading{margin-bottom:20px}
+#s18v .heading .sec{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
+#s18v .heading h2{font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1}
+#s18v .props{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#s18v .prop{display:flex;flex-direction:column;border:1px solid var(--wire);border-radius:6px;overflow:hidden}
+#s18v .prop.featured{border-color:var(--red)}
+#s18v .prop-head{padding:20px 24px;border-bottom:1px solid var(--wire)}
+#s18v .prop.featured .prop-head{background:rgba(192,0,0,.08);border-bottom-color:rgba(192,0,0,.25)}
+#s18v .prop-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--gray);text-transform:uppercase;margin-bottom:6px}
+#s18v .prop.featured .prop-label{color:var(--red)}
+#s18v .prop-price{font-family:'Oswald',sans-serif;font-size:52px;font-weight:700;color:#fff;line-height:1}
+#s18v .prop-price span{font-size:22px;color:var(--gray)}
+#s18v .prop-body{flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:10px;background:#0d0d0d}
+#s18v .prop-row{display:flex;gap:10px;align-items:flex-start}
+#s18v .prop-dot{width:6px;height:6px;border-radius:50%;background:var(--wire);margin-top:5px;flex-shrink:0}
+#s18v .prop.featured .prop-dot{background:var(--red)}
+#s18v .prop-item-title{font-size:12px;font-weight:600;color:#fff;line-height:1.3}
+#s18v .prop-item-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:1px}
+#s18v .prop.featured .prop-item-tag{color:rgba(192,0,0,.7)}
+
 /* ── PHONE MOCKUP ── */
 .phone-frame{width:196px;background:#0f0f0f;border-radius:30px;border:6px solid #252525;box-shadow:0 0 0 1px #1a1a1a,inset 0 0 0 1px #111,0 20px 60px rgba(0,0,0,.65);position:relative;overflow:hidden;flex-shrink:0}
 .phone-island{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:50px;height:14px;background:#0a0a0a;border-radius:8px;z-index:10;pointer-events:none}
@@ -1280,6 +1302,42 @@ body{display:flex;flex-direction:column}
 
 
 
+<!-- 21 — VALOR DA PROPOSTA -->
+<div class="slide dk" id="s18v">
+  <div class="heading">
+    <div class="sec">06 · Proposta Comercial</div>
+    <h2>INVESTIMENTO &amp; ESCOPO</h2>
+  </div>
+  <div class="props" id="props-grid">
+    <div class="prop featured" id="plan-dedicado">
+      <div class="prop-head">
+        <div class="prop-label">Plano Dedicado</div>
+        <div class="prop-price">R$&nbsp;33<span>k/mês</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Gestão completa de tráfego pago</div><div class="prop-item-tag">Meta Ads + Google Ads</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Produção de conteúdo</div><div class="prop-item-tag">24 posts/mês + stories + reels</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">CRM &amp; automação WhatsApp</div><div class="prop-item-tag">Régua completa por segmento</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Dashboard de métricas</div><div class="prop-item-tag">Relatório semanal + reunião mensal</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Clube de fidelidade</div><div class="prop-item-tag">Estratégia + gestão da base</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Estratégia SEO local</div><div class="prop-item-tag">Google Meu Negócio · todas as unidades</div></div></div>
+      </div>
+    </div>
+    <div class="prop" id="plan-essencial">
+      <div class="prop-head">
+        <div class="prop-label">Plano Essencial</div>
+        <div class="prop-price">R$&nbsp;15<span>k/mês</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Gestão de tráfego pago</div><div class="prop-item-tag">Meta Ads</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Produção de conteúdo</div><div class="prop-item-tag">12 posts/mês + stories</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Automação WhatsApp básica</div><div class="prop-item-tag">Régua de boas-vindas + promoções</div></div></div>
+        <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Relatório mensal</div><div class="prop-item-tag">Reunião de resultados</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 22 — ENCERRAMENTO -->
 <div class="slide dk" id="s18">
   <div class="bg-txt">OBRIGADO</div>
@@ -1353,6 +1411,21 @@ document.querySelectorAll('.phone-screen').forEach(function(el){
 });
 
 show(0);
+
+function revealEssential(){
+  const essencial = document.getElementById('plan-essencial');
+  const grid = document.getElementById('props-grid');
+  const dedicado = document.getElementById('plan-dedicado');
+  const btn = document.getElementById('btn-reveal');
+  essencial.style.display = '';
+  grid.style.display = 'grid';
+  grid.style.gridTemplateColumns = '1fr 1fr';
+  grid.style.gap = '16px';
+  dedicado.style.maxWidth = '';
+  dedicado.style.width = '';
+  dedicado.style.flex = '';
+  if(btn) btn.style.display = 'none';
+}
 
 function openGif(src){
   document.getElementById('gif-img').src = src;
