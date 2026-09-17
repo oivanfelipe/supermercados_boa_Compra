@@ -250,12 +250,10 @@ body{display:flex;flex-direction:column}
 #s9 .bk-note{font-size:10px;color:rgba(255,255,255,.3);font-style:italic;border-top:1px solid var(--wire);padding-top:8px;margin-top:auto}
 
 /* 9b — CARREFOUR INSTAGRAM REFERENCE */
-#s9b{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
-#s9b .left{background:#0d0d0d;border-right:1px solid var(--wire);padding:0;display:flex;flex-direction:column;gap:0}
-#s9b .right{padding:36px 44px;display:flex;flex-direction:column;gap:14px;justify-content:center}
-#s9b .ig-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-#s9b .ig-card{height:200px;overflow:hidden;border-radius:4px;background:#111;border:1px solid var(--wire);position:relative}
-#s9b .ig-card-inner{width:326px;position:absolute;top:0;left:0;transform:scale(0.37);transform-origin:top left}
+#s9b{background:var(--ink);display:flex;flex-direction:column;padding:28px 44px;gap:0}
+#s9b .top-header{margin-bottom:12px;flex-shrink:0}
+#s9b .phones-row{flex:1;display:flex;gap:24px;align-items:center;justify-content:center;min-height:0;overflow:hidden}
+#s9b .ref-note{background:rgba(192,0,0,.07);border:1px solid rgba(192,0,0,.2);padding:10px 14px;border-radius:4px;margin-top:12px;flex-shrink:0}
 #s9b .vid-thumb .vt-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);opacity:.4}
 
 /* 10 — TÁTICAS DO SETOR */
@@ -764,34 +762,66 @@ body{display:flex;flex-direction:column}
 
 <!-- 10b — CARREFOUR INSTAGRAM REFERENCE -->
 <div class="slide dk" id="s9b">
-  <div class="left" style="padding:0;overflow:hidden">
-    <img src="carrefuor.png" style="width:100%;height:100%;object-fit:contain;background:#0d0d0d;display:block;">
+  <div class="top-header">
+    <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:6px">03 · O que podemos aprender</div>
+    <div style="font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1">FORMATO DE CONTEÚDO QUE FUNCIONA — <em style="color:var(--red);font-style:normal">@carrefourbrasil</em></div>
   </div>
-  <div class="right" style="padding:36px 44px;display:flex;flex-direction:column;gap:14px;justify-content:center">
-    <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:4px">03 · O que podemos aprender</div>
-    <div style="font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:12px">FORMATO DE CONTEÚDO<br>QUE FUNCIONA</div>
-    <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-bottom:8px">Exemplos reais — conteúdo Carrefour</div>
-    <div class="ig-grid">
-      <div class="ig-card">
-        <div class="ig-card-inner">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdNhSyuke-S/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:none;margin:0;max-width:326px;padding:0;width:326px"></blockquote>
+  <div class="phones-row">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+      <div class="reel-outer">
+        <div class="reel-inner">
+          <div class="phone-frame">
+            <div class="phone-island"></div>
+            <div class="phone-screen">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/p/DdNhSyuke-S/"
+                data-instgrm-version="14"
+                style="background:#000;border:0;border-radius:3px;margin:1px;padding:0;width:99.375%">
+              </blockquote>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="ig-card">
-        <div class="ig-card-inner">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdKDCcyq3sY/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:none;margin:0;max-width:326px;padding:0;width:326px"></blockquote>
-        </div>
-      </div>
-      <div class="ig-card">
-        <div class="ig-card-inner">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdHhfHiC-5i/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:none;margin:0;max-width:326px;padding:0;width:326px"></blockquote>
-        </div>
-      </div>
+      <a href="https://www.instagram.com/p/DdNhSyuke-S/" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">Post — oferta ↗</a>
     </div>
-    <div style="background:rgba(192,0,0,.07);border:1px solid rgba(192,0,0,.2);padding:14px;border-radius:4px;margin-top:4px">
-      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:8px">Aplicação para a Boa Compra</div>
-      <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.55">A mesma lógica de conteúdo do Carrefour funciona em escala regional: oferta semanal em Reel, funcionário como creator, receita vinculada ao produto em promoção. Custo baixo, resultado real, autenticidade que rede nacional não tem.</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+      <div class="reel-outer">
+        <div class="reel-inner">
+          <div class="phone-frame">
+            <div class="phone-island"></div>
+            <div class="phone-screen">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DdKDCcyq3sY/"
+                data-instgrm-version="14"
+                style="background:#000;border:0;border-radius:3px;margin:1px;padding:0;width:99.375%">
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/reel/DdKDCcyq3sY/" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">Reel 01 ↗</a>
     </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+      <div class="reel-outer">
+        <div class="reel-inner">
+          <div class="phone-frame">
+            <div class="phone-island"></div>
+            <div class="phone-screen">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DdHhfHiC-5i/"
+                data-instgrm-version="14"
+                style="background:#000;border:0;border-radius:3px;margin:1px;padding:0;width:99.375%">
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/reel/DdHhfHiC-5i/" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">Reel 02 ↗</a>
+    </div>
+  </div>
+  <div class="ref-note">
+    <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:6px">Aplicação para a Boa Compra</div>
+    <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.5">A mesma lógica funciona em escala regional: oferta semanal em Reel, funcionário como creator, receita vinculada ao produto em promoção. Custo baixo, resultado real, autenticidade que rede nacional não tem.</div>
   </div>
 </div>
 
@@ -814,8 +844,9 @@ body{display:flex;flex-direction:column}
     </div>
     <div class="tac">
       <div class="tac-n">03</div>
-      <div class="tac-title">WhatsApp segmentado</div>
-      <div class="tac-text">Mensagem diferente por cidade e perfil de compra. Menos spam, mais abertura, mais resultado.</div>
+      <div class="tac-title">Grupos de Ofertas</div>
+      <div class="tac-text">Grupo no WhatsApp com as melhores ofertas da semana. Alcance direto, zero custo de mídia, abertura imediata.</div>
+      <a href="video-wpp.mp4" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px;display:inline-block;margin-top:8px">Ver exemplo ↗</a>
     </div>
     <div class="tac">
       <div class="tac-n">04</div>
