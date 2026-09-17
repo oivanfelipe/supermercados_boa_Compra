@@ -223,7 +223,7 @@ body{display:flex;flex-direction:column}
 #s7 .gap-note strong{color:var(--red)}
 
 /* 8 — CONCORRENTE: MERCADO BH */
-#s8 .right{padding:40px 44px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+#s8 .right{padding:24px 40px;display:flex;flex-direction:column;justify-content:center;gap:10px}
 
 /* 9 — BENCHMARK CARREFOUR */
 #s9{background:var(--ink);display:flex;flex-direction:column;padding:40px 52px}
@@ -391,11 +391,14 @@ body{display:flex;flex-direction:column}
 /* Cases s3 layout */
 #s3 .phones-row{flex:1;display:flex;gap:28px;align-items:center;min-height:0;overflow:hidden}
 /* Reel embeds escalados dentro de phone frame */
-.reel-outer{width:243px;height:394px;overflow:hidden;position:relative;flex-shrink:0}
-.reel-inner{width:338px;height:547px;transform:scale(0.72);transform-origin:top left;position:absolute;top:0;left:0}
+.reel-outer{width:210px;height:356px;overflow:hidden;position:relative;flex-shrink:0}
+.reel-inner{width:338px;height:547px;transform:scale(0.651);transform-origin:top left;position:absolute;top:0;left:0}
 .reel-inner .phone-frame{width:100%;height:547px;border-radius:36px}
 .reel-inner .phone-screen{padding-top:26px;background:#000}
 .reel-inner .instagram-media{min-width:0!important;max-width:100%!important;width:calc(100% - 2px)!important;margin:0 1px!important;border-radius:0!important;background:#000!important}
+/* Larger phones only for single-phone slides */
+#s5b .reel-outer,#s7 .reel-outer,#s8 .reel-outer{width:240px;height:388px}
+#s5b .reel-inner,#s7 .reel-inner,#s8 .reel-inner{transform:scale(0.709)}
 /* s5b — presença digital atual */
 #s5b{background:var(--ink);display:flex;overflow:hidden}
 #s5b .pb-left{width:40%;background:#0d0d0d;border-right:1px solid var(--wire);padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
@@ -683,19 +686,19 @@ body{display:flex;flex-direction:column}
   <div class="right">
     <div>
       <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:8px">03 · Análise competitiva</div>
-      <div style="font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:18px">MERCADO BH</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:10px">MERCADO BH</div>
     </div>
-    <div style="background:#111;border:1px solid var(--wire);padding:14px;border-radius:3px;margin-bottom:10px">
-      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-bottom:10px">Como competem digitalmente</div>
-      <div class="action-item hl" style="margin-bottom:6px">
+    <div style="background:#111;border:1px solid var(--wire);padding:10px;border-radius:3px;margin-bottom:8px">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-bottom:8px">Como competem digitalmente</div>
+      <div class="action-item hl" style="margin-bottom:4px">
         <div class="ai-dot"></div>
         <div><div class="action-title">Volume de conteúdo</div><div class="action-text">Promoções diárias no Instagram — escala de rede nacional com adaptação regional</div></div>
       </div>
-      <div class="action-item" style="margin-bottom:6px">
+      <div class="action-item" style="margin-bottom:4px">
         <div class="ai-dot"></div>
         <div><div class="action-title">Presença multicanal</div><div class="action-text">Instagram + YouTube + website — investimento nacional distribuído regionalmente</div></div>
       </div>
-      <div class="action-item">
+      <div class="action-item" style="margin-bottom:4px">
         <div class="ai-dot"></div>
         <div><div class="action-title">Vínculo emocional</div><div class="action-text">Patrocínio do Cruzeiro — identidade mineira usada como alavanca de pertencimento</div></div>
       </div>
@@ -704,7 +707,7 @@ body{display:flex;flex-direction:column}
         <div><div class="action-title">App próprio</div><div class="action-text">Aplicativo com catálogo de ofertas, lista de compras e histórico — canal direto sem depender de rede social</div></div>
       </div>
     </div>
-    <div style="background:rgba(74,173,122,.08);border:1px solid rgba(74,173,122,.2);padding:14px;border-radius:3px">
+    <div style="background:rgba(74,173,122,.08);border:1px solid rgba(74,173,122,.2);padding:10px;border-radius:3px">
       <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:#4aad7a;text-transform:uppercase;margin-bottom:10px">Onde a Boa Compra vence</div>
       <div style="font-size:11px;color:rgba(255,255,255,.45);line-height:1.55">
         Proximidade real com o cliente local. Velocidade de adaptação por praça. O gerente que conhece o cliente pelo nome é vantagem que rede nacional de 400 lojas não replica. <strong style="color:#fff">Você não compete em volume — compete em relevância.</strong>
