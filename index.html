@@ -366,6 +366,50 @@ body{display:flex;flex-direction:column}
 #s18v .prop-item-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:1px}
 #s18v .prop.featured .prop-item-tag{color:rgba(192,0,0,.7)}
 
+/* ── PHONE MOCKUP ── */
+.phone-frame{width:196px;background:#0f0f0f;border-radius:30px;border:6px solid #252525;box-shadow:0 0 0 1px #1a1a1a,inset 0 0 0 1px #111,0 20px 60px rgba(0,0,0,.65);position:relative;overflow:hidden;flex-shrink:0}
+.phone-island{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:50px;height:14px;background:#0a0a0a;border-radius:8px;z-index:10;pointer-events:none}
+.phone-screen{width:100%;height:100%;overflow-y:scroll;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none;background:#000}
+.phone-screen::-webkit-scrollbar{display:none}
+.phone-caption{font-family:'Oswald',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.2);text-transform:uppercase;text-align:center;margin-top:7px}
+/* Instagram profile compact — inside phone */
+.pp{background:#000;display:flex;flex-direction:column;min-height:100%}
+.pp-topbar{padding:24px 12px 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1a1a1a;flex-shrink:0}
+.pp-handle{font-size:11px;font-weight:700;color:#fff;font-family:'Inter',Arial,sans-serif;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+.pp-header{padding:10px 12px 4px;flex-shrink:0}
+.pp-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.pp-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;font-family:'Oswald',sans-serif;box-shadow:0 0 0 2px #000,0 0 0 4px #ee2a7b}
+.pp-stats{display:flex;flex:1;justify-content:space-around}
+.pp-stat{text-align:center;line-height:1}
+.pp-stat-n{font-size:12px;font-weight:700;color:#fff;display:block}
+.pp-stat-l{font-size:8px;color:#aaa;display:block;margin-top:1px}
+.pp-name{font-size:11px;font-weight:700;color:#fff;margin-bottom:1px}
+.pp-cat{font-size:9px;color:#aaa;margin-bottom:3px}
+.pp-bio{font-size:9px;color:#ddd;line-height:1.4;margin-bottom:2px}
+.pp-link{font-size:9px;color:#7ba8e0;margin-bottom:6px}
+.pp-btns{display:flex;gap:4px;padding:2px 12px 6px;flex-shrink:0}
+.pp-btn{flex:1;background:#262626;border-radius:6px;padding:4px 0;font-size:9px;font-weight:600;color:#fff;text-align:center;border:1px solid #333}
+.pp-btn.pp-out{background:transparent;border:1px solid #444}
+.pp-hls{display:flex;gap:8px;padding:4px 12px 8px;overflow:hidden;flex-shrink:0}
+.pp-hl{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0}
+.pp-hl-ring{width:40px;height:40px;border-radius:50%;padding:2px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}
+.pp-hl-inner{width:34px;height:34px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:11px}
+.pp-hl-label{font-size:7px;color:#aaa;max-width:44px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-divider{height:1px;background:#1a1a1a;flex-shrink:0}
+.pp-tabs{display:flex;flex-shrink:0}
+.pp-tab{flex:1;text-align:center;padding:6px 0;font-size:10px;color:#555;border-bottom:1px solid #111}
+.pp-tab.active{color:#fff;border-bottom-color:#fff}
+.pp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#111}
+.pp-thumb{position:relative;overflow:hidden;aspect-ratio:1}
+.pp-thumb-bg{position:absolute;inset:0}
+.pp-thumb-reel{position:absolute;top:3px;right:4px;font-size:9px;color:#fff;opacity:.8}
+/* Cases s3 layout */
+#s3 .phones-row{flex:1;display:flex;gap:28px;align-items:center;min-height:0;overflow:hidden}
+/* s5b — presença digital atual */
+#s5b{background:var(--ink);display:flex;overflow:hidden}
+#s5b .pb-left{width:310px;background:#0d0d0d;border-right:1px solid var(--wire);padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
+#s5b .pb-right{flex:1;padding:36px 40px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+
 /* 19 — ENCERRAMENTO */
 #s18{background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
 #s18 .bg-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Oswald',sans-serif;font-size:280px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.02);white-space:nowrap;letter-spacing:-4px}
@@ -428,71 +472,96 @@ body{display:flex;flex-direction:column}
   </div>
 </div>
 
-<!-- 3 — CASES INSTAGRAM -->
+<!-- 3 — CASES INSTAGRAM (phone mockup scrollável) -->
 <div class="slide dk" id="s3">
   <div class="top">
     <div class="top-tag">01 · Cases</div>
     <div class="top-title">RESULTADOS QUE FALAM POR SI</div>
   </div>
-  <div class="embeds">
-    <!-- Reel 01 — CSS-only mockup -->
-    <div class="ig-reel">
-      <div class="ig-reel-video">
-        <div class="ig-reel-bg" style="background:linear-gradient(160deg,#1a0808 0%,#2a1010 35%,#0d0d0d 60%,#1a0808 100%)"></div>
-        <div class="ig-reel-grad"></div>
-        <div class="ig-reel-play">▶</div>
-        <div class="ig-reel-topbar">
-          <span class="ig-reel-logo">Reels</span>
-          <div class="ig-reel-user-top">
-            <div class="ig-reel-av-sm">V4</div>
-            <span class="ig-reel-handle">v4carvalhoeco</span>
-            <span class="ig-reel-follow-btn">Seguir</span>
+  <div class="phones-row">
+    <!-- Phone: @felipe.carvalho.v4 scrollável -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+      <div class="phone-frame" style="height:390px">
+        <div class="phone-island"></div>
+        <div class="phone-screen">
+          <div class="pp">
+            <div class="pp-topbar">
+              <span class="pp-handle">felipe.carvalho.v4</span>
+              <span style="font-size:12px;color:#aaa">···</span>
+            </div>
+            <div class="pp-header">
+              <div class="pp-row">
+                <div class="pp-av" style="background:linear-gradient(135deg,#6B0000,#C00000)">FC</div>
+                <div class="pp-stats">
+                  <div class="pp-stat"><span class="pp-stat-n">312</span><span class="pp-stat-l">posts</span></div>
+                  <div class="pp-stat"><span class="pp-stat-n">8,4K</span><span class="pp-stat-l">seguidores</span></div>
+                  <div class="pp-stat"><span class="pp-stat-n">247</span><span class="pp-stat-l">seguindo</span></div>
+                </div>
+              </div>
+              <div class="pp-name">Felipe Carvalho · V4</div>
+              <div class="pp-cat">Marketing de Performance · Unaí — MG</div>
+              <div class="pp-bio">Sócio V4 Carvalho &amp; Co · Performance &amp; Resultado</div>
+              <div class="pp-bio">95% retenção · 2× melhor unidade V4</div>
+            </div>
+            <div class="pp-btns">
+              <div class="pp-btn">Seguir</div>
+              <div class="pp-btn pp-out">Mensagem</div>
+            </div>
+            <div class="pp-hls">
+              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">📈</div></div><span class="pp-hl-label">Cases</span></div>
+              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">🎯</div></div><span class="pp-hl-label">Tráfego</span></div>
+              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">📊</div></div><span class="pp-hl-label">Dados</span></div>
+              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">🏆</div></div><span class="pp-hl-label">Prêmios</span></div>
+            </div>
+            <div class="pp-divider"></div>
+            <div class="pp-tabs">
+              <div class="pp-tab active">⊞</div>
+              <div class="pp-tab">▶</div>
+              <div class="pp-tab">♯</div>
+            </div>
+            <div class="pp-grid">
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a0808,#C00000)"></div><span class="pp-thumb-reel">▶</span></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#080a18,#10183a)"></div></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0c1608,#183010)"></div><span class="pp-thumb-reel">▶</span></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#181008,#3a2800)"></div><span class="pp-thumb-reel">▶</span></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#100808,#C00000)"></div></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#080a16,#12183a)"></div><span class="pp-thumb-reel">▶</span></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#14080e,#30102a)"></div><span class="pp-thumb-reel">▶</span></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0c1408,#1a2a0c)"></div></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#180a08,#3a100a)"></div><span class="pp-thumb-reel">▶</span></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0a0c18,#141838)"></div></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a0a08,#C00000)"></div><span class="pp-thumb-reel">▶</span></div>
+              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0a1610,#102a18)"></div></div>
+            </div>
           </div>
         </div>
-        <div class="ig-reel-actions">
-          <div class="ig-reel-action"><div class="ig-reel-action-icon">♥</div><div class="ig-reel-action-count">4,2K</div></div>
-          <div class="ig-reel-action"><div class="ig-reel-action-icon">💬</div><div class="ig-reel-action-count">186</div></div>
-          <div class="ig-reel-action"><div class="ig-reel-action-icon">↗</div><div class="ig-reel-action-count">312</div></div>
-        </div>
-        <div class="ig-reel-bottom">
-          <div class="ig-reel-caption-handle">v4carvalhoeco</div>
-          <div class="ig-reel-caption-text">Case real — crescimento orgânico + pago em 60 dias. Resultado mensurável do primeiro mês ↗</div>
-          <div class="ig-reel-audio">♪ Áudio original · v4carvalhoeco</div>
-        </div>
       </div>
-      <div class="ig-reel-footer">
-        <span class="ig-reel-link">Ver no Instagram ↗</span>
-        <span class="ig-reel-stats">Case 01 · @v4carvalhoeco</span>
-      </div>
+      <a href="https://www.instagram.com/felipe.carvalho.v4" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">@felipe.carvalho.v4 ↗</a>
     </div>
-    <!-- Reel 02 — CSS-only mockup -->
-    <div class="ig-reel">
-      <div class="ig-reel-video">
-        <div class="ig-reel-bg" style="background:linear-gradient(160deg,#080a18 0%,#10142a 35%,#0d0d0d 60%,#080a18 100%)"></div>
-        <div class="ig-reel-grad"></div>
-        <div class="ig-reel-play">▶</div>
-        <div class="ig-reel-topbar">
-          <span class="ig-reel-logo">Reels</span>
-          <div class="ig-reel-user-top">
-            <div class="ig-reel-av-sm">V4</div>
-            <span class="ig-reel-handle">v4carvalhoeco</span>
-            <span class="ig-reel-follow-btn">Seguir</span>
-          </div>
-        </div>
-        <div class="ig-reel-actions">
-          <div class="ig-reel-action"><div class="ig-reel-action-icon">♥</div><div class="ig-reel-action-count">6,1K</div></div>
-          <div class="ig-reel-action"><div class="ig-reel-action-icon">💬</div><div class="ig-reel-action-count">241</div></div>
-          <div class="ig-reel-action"><div class="ig-reel-action-icon">↗</div><div class="ig-reel-action-count">507</div></div>
-        </div>
-        <div class="ig-reel-bottom">
-          <div class="ig-reel-caption-handle">v4carvalhoeco</div>
-          <div class="ig-reel-caption-text">Metrificação que transforma investimento em resultado. Cada real com destino rastreável 📊</div>
-          <div class="ig-reel-audio">♪ Áudio original · v4carvalhoeco</div>
-        </div>
+    <!-- Proof panel -->
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px">
+      <div>
+        <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px">01 · Prova Social</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:16px">SIGA QUEM JÁ<br>FEZ ACONTECER</div>
       </div>
-      <div class="ig-reel-footer">
-        <span class="ig-reel-link">Ver no Instagram ↗</span>
-        <span class="ig-reel-stats">Case 02 · @v4carvalhoeco</span>
+      <div class="action-item hl">
+        <div class="ai-dot"></div>
+        <div><div class="action-title">95% de retenção de clientes</div><div class="action-text">Na carteira ativa — retemos por resultado, não por contrato ou obrigação</div></div>
+      </div>
+      <div class="action-item hl">
+        <div class="ai-dot"></div>
+        <div><div class="action-title">2× melhor unidade V4</div><div class="action-text">Reconhecida por dois trimestres consecutivos dentro da maior rede de performance do Brasil</div></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-dot"></div>
+        <div><div class="action-title">Cases documentados e rastreáveis</div><div class="action-text">Josapar · Grupo Luchino · Klubi · Positive — cada resultado com número real</div></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-dot"></div>
+        <div><div class="action-title">27 anos de mercado antes da V4</div><div class="action-text">Metodologia sólida. Processo testado. Não aprendemos com o seu dinheiro.</div></div>
+      </div>
+      <div style="background:rgba(192,0,0,.08);border:1px solid rgba(192,0,0,.2);border-radius:4px;padding:10px 14px;margin-top:2px">
+        <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.55;font-style:italic">"Não somos a primeira agência a atender você. Mas nossa metodologia garante que não precisará de outra."</div>
       </div>
     </div>
   </div>
@@ -568,6 +637,92 @@ body{display:flex;flex-direction:column}
   </div>
 </div>
 
+
+<!-- 5b — PRESENÇA DIGITAL ATUAL (Boa Compra) -->
+<div class="slide dk" id="s5b">
+  <div class="pb-left">
+    <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:10px;text-align:center">02 · Diagnóstico</div>
+    <div class="phone-frame" style="height:390px">
+      <div class="phone-island"></div>
+      <div class="phone-screen">
+        <div class="pp">
+          <div class="pp-topbar">
+            <span class="pp-handle">boacomprataiobeiras</span>
+            <span style="font-size:12px;color:#aaa">···</span>
+          </div>
+          <div class="pp-header">
+            <div class="pp-row">
+              <div class="pp-av" style="background:linear-gradient(135deg,#8B0000,#C00000)">BC</div>
+              <div class="pp-stats">
+                <div class="pp-stat"><span class="pp-stat-n">1.694</span><span class="pp-stat-l">posts</span></div>
+                <div class="pp-stat"><span class="pp-stat-n">8.859</span><span class="pp-stat-l">seguidores</span></div>
+                <div class="pp-stat"><span class="pp-stat-n">391</span><span class="pp-stat-l">seguindo</span></div>
+              </div>
+            </div>
+            <div class="pp-name">Supermercado Boa Compra Taiobeiras</div>
+            <div class="pp-cat">Supermercado · Taiobeiras — MG</div>
+            <div class="pp-bio">Ofertas e promoções para a sua família</div>
+            <div class="pp-bio">📍 Taiobeiras, Norte de MG</div>
+          </div>
+          <div class="pp-btns">
+            <div class="pp-btn">Seguir</div>
+            <div class="pp-btn pp-out">Mensagem</div>
+          </div>
+          <div class="pp-hls">
+            <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">🛒</div></div><span class="pp-hl-label">Ofertas</span></div>
+            <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">🥩</div></div><span class="pp-hl-label">Açougue</span></div>
+            <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">🎉</div></div><span class="pp-hl-label">Promos</span></div>
+            <div class="pp-hl"><div class="pp-hl-ring" style="background:#333;"><div class="pp-hl-inner" style="background:#1a1a1a">+</div></div><span class="pp-hl-label">Novo</span></div>
+          </div>
+          <div class="pp-divider"></div>
+          <div class="pp-tabs">
+            <div class="pp-tab active">⊞</div>
+            <div class="pp-tab">▶</div>
+            <div class="pp-tab">♯</div>
+          </div>
+          <div class="pp-grid">
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a0808,#C00000)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a0c08,#3a2010)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#100a0a,#C00000)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#181208,#3a2800)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0a0808,#280808)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a0a08,#C00000)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a1208,#3a2a08)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#180808,#3a1010)"></div></div>
+            <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#100c08,#C00000)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="https://www.instagram.com/boacomprataiobeiras" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">@boacomprataiobeiras ↗</a>
+  </div>
+  <div class="pb-right">
+    <div>
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:8px">Presença digital atual</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:16px">O INSTAGRAM<br>DA BOA COMPRA<br><em style="color:var(--red);font-style:normal">HOJE</em></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Contas fragmentadas por cidade</div><div class="action-text">Cada unidade tem seu próprio Instagram — sem identidade de rede, sem força consolidada de marca</div></div>
+    </div>
+    <div class="action-item">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Audiência com potencial não explorado</div><div class="action-text">~8.859 seguidores na conta mais ativa (Taiobeiras) — potencial enorme sem estratégia de crescimento</div></div>
+    </div>
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Conteúdo sem calendário editorial</div><div class="action-text">Postagens de oferta sem planejamento, sem teste A/B, sem mensuração de impacto em vendas</div></div>
+    </div>
+    <div class="action-item hl">
+      <div class="ai-dot"></div>
+      <div><div class="action-title">Zero rastreamento de resultado</div><div class="action-text">Sem pixel, sem UTM, sem landing page — impossível calcular o retorno de cada post ou campanha</div></div>
+    </div>
+    <div style="background:rgba(192,0,0,.08);border:1px solid rgba(192,0,0,.2);border-radius:4px;padding:12px 14px;margin-top:4px">
+      <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:6px">A oportunidade</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.55">A estrutura existe e tem escala real. Com estratégia e mensuração corretas, o Instagram se torna canal de venda — não só vitrine de ofertas.</div>
+    </div>
+  </div>
+</div>
 
 <!-- 7 — SEP CONCORRENTES -->
 <div class="slide sep" id="s7-sep">
@@ -1369,6 +1524,12 @@ document.addEventListener('keydown', e => {
 });
 
 window.addEventListener('resize', scaleCanvas);
+
+// Wheel events inside phone mockups scroll the profile — don't navigate slides
+document.querySelectorAll('.phone-screen').forEach(function(el){
+  el.addEventListener('wheel', function(e){ e.stopPropagation(); }, {passive:true});
+});
+
 show(0);
 </script>
 </body>
