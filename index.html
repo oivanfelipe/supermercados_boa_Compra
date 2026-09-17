@@ -351,6 +351,13 @@ body{display:flex;flex-direction:column}
 #s18v .prop-item-title{font-size:12px;font-weight:600;color:#fff;line-height:1.3}
 #s18v .prop-item-tag{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:1px}
 #s18v .prop.featured .prop-item-tag{color:rgba(192,0,0,.7)}
+#s18v .prop-body{display:none}
+#s18v .prop.open .prop-body{display:flex}
+#s18v .prop-btn{margin-top:14px;padding:8px 20px;font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);background:transparent;border:1px solid var(--wire);border-radius:3px;cursor:pointer;transition:all .2s;width:100%}
+#s18v .prop.featured .prop-btn{color:var(--red);border-color:rgba(192,0,0,.4)}
+#s18v .prop-btn:hover{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.25)}
+#s18v .prop.featured .prop-btn:hover{background:rgba(192,0,0,.1);color:var(--red);border-color:var(--red)}
+#s18v .prop.open .prop-btn{display:none}
 
 /* ── PHONE MOCKUP ── */
 .phone-frame{width:196px;background:#0f0f0f;border-radius:30px;border:6px solid #252525;box-shadow:0 0 0 1px #1a1a1a,inset 0 0 0 1px #111,0 20px 60px rgba(0,0,0,.65);position:relative;overflow:hidden;flex-shrink:0}
@@ -1313,6 +1320,7 @@ body{display:flex;flex-direction:column}
       <div class="prop-head">
         <div class="prop-label">Plano Dedicado</div>
         <div class="prop-price">R$&nbsp;33<span>k/mês</span></div>
+        <button class="prop-btn" onclick="openProp('plan-dedicado')">Ver escopo completo ↓</button>
       </div>
       <div class="prop-body">
         <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Gestão completa de tráfego pago</div><div class="prop-item-tag">Meta Ads + Google Ads</div></div></div>
@@ -1327,6 +1335,7 @@ body{display:flex;flex-direction:column}
       <div class="prop-head">
         <div class="prop-label">Plano Essencial</div>
         <div class="prop-price">R$&nbsp;15<span>k/mês</span></div>
+        <button class="prop-btn" onclick="openProp('plan-essencial')">Ver escopo completo ↓</button>
       </div>
       <div class="prop-body">
         <div class="prop-row"><div class="prop-dot"></div><div><div class="prop-item-title">Gestão de tráfego pago</div><div class="prop-item-tag">Meta Ads</div></div></div>
@@ -1372,6 +1381,7 @@ let cur = 0;
 
 function show(n){
   cur = Math.max(0, Math.min(slides.length-1, n));
+  document.querySelectorAll('#s18v .prop.open').forEach(p => p.classList.remove('open'));
   slides.forEach((s,i) => {
     if(i === cur){
       s.style.display = '';
@@ -1412,19 +1422,8 @@ document.querySelectorAll('.phone-screen').forEach(function(el){
 
 show(0);
 
-function revealEssential(){
-  const essencial = document.getElementById('plan-essencial');
-  const grid = document.getElementById('props-grid');
-  const dedicado = document.getElementById('plan-dedicado');
-  const btn = document.getElementById('btn-reveal');
-  essencial.style.display = '';
-  grid.style.display = 'grid';
-  grid.style.gridTemplateColumns = '1fr 1fr';
-  grid.style.gap = '16px';
-  dedicado.style.maxWidth = '';
-  dedicado.style.width = '';
-  dedicado.style.flex = '';
-  if(btn) btn.style.display = 'none';
+function openProp(id){
+  document.getElementById(id).classList.add('open');
 }
 
 function openGif(src){
