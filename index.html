@@ -405,6 +405,12 @@ body{display:flex;flex-direction:column}
 .pp-thumb-reel{position:absolute;top:3px;right:4px;font-size:9px;color:#fff;opacity:.8}
 /* Cases s3 layout */
 #s3 .phones-row{flex:1;display:flex;gap:28px;align-items:center;min-height:0;overflow:hidden}
+/* Reel embeds escalados dentro de phone frame */
+.reel-outer{width:220px;height:374px;overflow:hidden;position:relative;flex-shrink:0}
+.reel-inner{width:338px;height:575px;transform:scale(0.651);transform-origin:top left;position:absolute;top:0;left:0}
+.reel-inner .phone-frame{width:100%;height:575px;border-radius:36px}
+.reel-inner .phone-screen{padding-top:26px;background:#000}
+.reel-inner .instagram-media{min-width:0!important;max-width:100%!important;width:calc(100% - 2px)!important;margin:0 1px!important;border-radius:0!important;background:#000!important}
 /* s5b — presença digital atual */
 #s5b{background:var(--ink);display:flex;overflow:hidden}
 #s5b .pb-left{width:310px;background:#0d0d0d;border-right:1px solid var(--wire);padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
@@ -472,71 +478,48 @@ body{display:flex;flex-direction:column}
   </div>
 </div>
 
-<!-- 3 — CASES INSTAGRAM (phone mockup scrollável) -->
+<!-- 3 — CASES INSTAGRAM (reels reais) -->
 <div class="slide dk" id="s3">
   <div class="top">
     <div class="top-tag">01 · Cases</div>
     <div class="top-title">RESULTADOS QUE FALAM POR SI</div>
   </div>
   <div class="phones-row">
-    <!-- Phone: @felipe.carvalho.v4 scrollável -->
+    <!-- Reel 1 -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
-      <div class="phone-frame" style="height:390px">
-        <div class="phone-island"></div>
-        <div class="phone-screen">
-          <div class="pp">
-            <div class="pp-topbar">
-              <span class="pp-handle">felipe.carvalho.v4</span>
-              <span style="font-size:12px;color:#aaa">···</span>
-            </div>
-            <div class="pp-header">
-              <div class="pp-row">
-                <div class="pp-av" style="background:linear-gradient(135deg,#6B0000,#C00000)">FC</div>
-                <div class="pp-stats">
-                  <div class="pp-stat"><span class="pp-stat-n">312</span><span class="pp-stat-l">posts</span></div>
-                  <div class="pp-stat"><span class="pp-stat-n">8,4K</span><span class="pp-stat-l">seguidores</span></div>
-                  <div class="pp-stat"><span class="pp-stat-n">247</span><span class="pp-stat-l">seguindo</span></div>
-                </div>
-              </div>
-              <div class="pp-name">Felipe Carvalho · V4</div>
-              <div class="pp-cat">Marketing de Performance · Unaí — MG</div>
-              <div class="pp-bio">Sócio V4 Carvalho &amp; Co · Performance &amp; Resultado</div>
-              <div class="pp-bio">95% retenção · 2× melhor unidade V4</div>
-            </div>
-            <div class="pp-btns">
-              <div class="pp-btn">Seguir</div>
-              <div class="pp-btn pp-out">Mensagem</div>
-            </div>
-            <div class="pp-hls">
-              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">📈</div></div><span class="pp-hl-label">Cases</span></div>
-              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">🎯</div></div><span class="pp-hl-label">Tráfego</span></div>
-              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">📊</div></div><span class="pp-hl-label">Dados</span></div>
-              <div class="pp-hl"><div class="pp-hl-ring"><div class="pp-hl-inner">🏆</div></div><span class="pp-hl-label">Prêmios</span></div>
-            </div>
-            <div class="pp-divider"></div>
-            <div class="pp-tabs">
-              <div class="pp-tab active">⊞</div>
-              <div class="pp-tab">▶</div>
-              <div class="pp-tab">♯</div>
-            </div>
-            <div class="pp-grid">
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a0808,#C00000)"></div><span class="pp-thumb-reel">▶</span></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#080a18,#10183a)"></div></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0c1608,#183010)"></div><span class="pp-thumb-reel">▶</span></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#181008,#3a2800)"></div><span class="pp-thumb-reel">▶</span></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#100808,#C00000)"></div></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#080a16,#12183a)"></div><span class="pp-thumb-reel">▶</span></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#14080e,#30102a)"></div><span class="pp-thumb-reel">▶</span></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0c1408,#1a2a0c)"></div></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#180a08,#3a100a)"></div><span class="pp-thumb-reel">▶</span></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0a0c18,#141838)"></div></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#1a0a08,#C00000)"></div><span class="pp-thumb-reel">▶</span></div>
-              <div class="pp-thumb"><div class="pp-thumb-bg" style="background:linear-gradient(135deg,#0a1610,#102a18)"></div></div>
+      <div class="reel-outer">
+        <div class="reel-inner">
+          <div class="phone-frame">
+            <div class="phone-island"></div>
+            <div class="phone-screen">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DbvgCaCxCRr/"
+                data-instgrm-version="14"
+                style="background:#000;border:0;border-radius:3px;margin:1px;padding:0;width:99.375%">
+              </blockquote>
             </div>
           </div>
         </div>
       </div>
-      <a href="https://www.instagram.com/felipe.carvalho.v4" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">@felipe.carvalho.v4 ↗</a>
+      <a href="https://www.instagram.com/reel/DbvgCaCxCRr/" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">@felipe.carvalho.v4 · Case 01 ↗</a>
+    </div>
+    <!-- Reel 2 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+      <div class="reel-outer">
+        <div class="reel-inner">
+          <div class="phone-frame">
+            <div class="phone-island"></div>
+            <div class="phone-screen">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DbTprZmRo_A/"
+                data-instgrm-version="14"
+                style="background:#000;border:0;border-radius:3px;margin:1px;padding:0;width:99.375%">
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/reel/DbTprZmRo_A/" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">@felipe.carvalho.v4 · Case 02 ↗</a>
     </div>
     <!-- Proof panel -->
     <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px">
@@ -1505,6 +1488,7 @@ function show(n){
   document.getElementById('counter').textContent = `${cur+1} · ${slides.length}`;
   document.getElementById('progress-bar').style.width = `${(cur/(slides.length-1))*100}%`;
   scaleCanvas();
+  if(window.instgrm) setTimeout(()=>window.instgrm.Embeds.process(), 150);
 }
 
 function go(d){ show(cur+d) }
@@ -1532,5 +1516,6 @@ document.querySelectorAll('.phone-screen').forEach(function(el){
 
 show(0);
 </script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
