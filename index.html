@@ -201,8 +201,8 @@ body{display:flex;flex-direction:column}
 #s6 .impact-text{font-size:11px;color:rgba(255,255,255,.35);line-height:1.45}
 
 /* 7 — CONCORRENTE: HIPER FAROL */
-#s7,#s8,#s9b{background:var(--ink);display:grid;grid-template-columns:320px 1fr;overflow:hidden}
-#s7 .left,#s8 .left,#s9b .left{background:#111;border-right:1px solid var(--wire);padding:36px 28px;display:flex;flex-direction:column}
+#s7,#s8,#s9b{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+#s7 .left,#s8 .left,#s9b .left{background:#111;border-right:1px solid var(--wire);padding:0;display:flex;flex-direction:column}
 #s7 .ig-mock{flex:1}
 #s7 .ig-prof,#s8 .ig-prof,#s9b .ig-prof{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 #s7 .ig-av,#s8 .ig-av,#s9b .ig-av{width:48px;height:48px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
@@ -250,8 +250,8 @@ body{display:flex;flex-direction:column}
 #s9 .bk-note{font-size:10px;color:rgba(255,255,255,.3);font-style:italic;border-top:1px solid var(--wire);padding-top:8px;margin-top:auto}
 
 /* 9b — CARREFOUR INSTAGRAM REFERENCE */
-#s9b{background:var(--ink);display:grid;grid-template-columns:300px 1fr;overflow:hidden}
-#s9b .left{background:#0d0d0d;border-right:1px solid var(--wire);padding:36px 28px;display:flex;flex-direction:column;gap:0}
+#s9b{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+#s9b .left{background:#0d0d0d;border-right:1px solid var(--wire);padding:0;display:flex;flex-direction:column;gap:0}
 #s9b .right{padding:36px 44px;display:flex;flex-direction:column;gap:14px;justify-content:center}
 #s9b .vid-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
 #s9b .vid-thumb{aspect-ratio:9/16;background:#111;border:1px solid var(--wire);border-radius:4px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px}
@@ -413,7 +413,7 @@ body{display:flex;flex-direction:column}
 .reel-inner .instagram-media{min-width:0!important;max-width:100%!important;width:calc(100% - 2px)!important;margin:0 1px!important;border-radius:0!important;background:#000!important}
 /* s5b — presença digital atual */
 #s5b{background:var(--ink);display:flex;overflow:hidden}
-#s5b .pb-left{width:310px;background:#0d0d0d;border-right:1px solid var(--wire);padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
+#s5b .pb-left{width:50%;background:#0d0d0d;border-right:1px solid var(--wire);padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
 #s5b .pb-right{flex:1;padding:36px 40px;display:flex;flex-direction:column;justify-content:center;gap:12px}
 
 /* 19 — ENCERRAMENTO */
@@ -624,11 +624,7 @@ body{display:flex;flex-direction:column}
 <!-- 5b — PRESENÇA DIGITAL ATUAL (Boa Compra) -->
 <div class="slide dk" id="s5b">
   <div class="pb-left">
-    <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:10px;text-align:center">02 · Diagnóstico</div>
-    <div style="width:100%;flex:1;min-height:0;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,0.08)">
-      <img src="boa.png" style="width:100%;height:100%;object-fit:contain;background:#0d0d0d;display:block;">
-    </div>
-    <a href="https://www.instagram.com/boacomprataiobeiras" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">@boacomprataiobeiras ↗</a>
+    <img src="boa.png" style="width:100%;height:100%;object-fit:contain;background:#0d0d0d;display:block;">
   </div>
   <div class="pb-right">
     <div>
@@ -655,6 +651,7 @@ body{display:flex;flex-direction:column}
       <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:6px">A oportunidade</div>
       <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.55">A estrutura existe e tem escala real. Com estratégia e mensuração corretas, o Instagram se torna canal de venda — não só vitrine de ofertas.</div>
     </div>
+    <a href="https://www.instagram.com/boacomprataiobeiras" target="_blank" class="ig-profile-link" style="font-size:8px;letter-spacing:2px">@boacomprataiobeiras ↗</a>
   </div>
 </div>
 
